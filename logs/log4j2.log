@@ -1,0 +1,67 @@
+2022-09-22 15:49:21.335  INFO DESKTOP-FD4DNOH --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 17.0.3.1 on DESKTOP-FD4DNOH with PID 19648 (C:\Users\Rei\Desktop\warehouse\target\classes started by Rei in C:\Users\Rei\Desktop\warehouse)
+2022-09-22 15:49:21.351  INFO DESKTOP-FD4DNOH --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-22 15:49:21.736  INFO DESKTOP-FD4DNOH --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-22 15:49:21.751  INFO DESKTOP-FD4DNOH --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2022-09-22 15:49:22.093  INFO DESKTOP-FD4DNOH --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-22 15:49:22.093  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-22 15:49:22.093  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-22 15:49:22.093  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-22 15:49:22.171  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-22 15:49:22.171  INFO DESKTOP-FD4DNOH --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 796 ms
+2022-09-22 15:49:22.296  INFO DESKTOP-FD4DNOH --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-22 15:49:22.374  INFO DESKTOP-FD4DNOH --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-22 15:49:22.530  INFO DESKTOP-FD4DNOH --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-22 15:49:22.764  INFO DESKTOP-FD4DNOH --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-22 15:49:22.827  INFO DESKTOP-FD4DNOH --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-22 15:49:22.874  INFO DESKTOP-FD4DNOH --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-22 15:49:22.889  INFO DESKTOP-FD4DNOH --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-22 15:49:22.983  INFO DESKTOP-FD4DNOH --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-22 15:49:23.030  INFO DESKTOP-FD4DNOH --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-22 15:49:23.124  INFO DESKTOP-FD4DNOH --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-22 15:49:23.124  INFO DESKTOP-FD4DNOH --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 15:49:23.280  WARN DESKTOP-FD4DNOH --- [ main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2022-09-22 15:49:23.358  WARN DESKTOP-FD4DNOH --- [ main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 83331335-d495-4498-8552-2db66ff5858d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-09-22 15:49:23.405  INFO DESKTOP-FD4DNOH --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@ce0bbd5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@399fd710, org.springframework.security.web.context.SecurityContextPersistenceFilter@5d04fbb7, org.springframework.security.web.header.HeaderWriterFilter@55574295, org.springframework.security.web.csrf.CsrfFilter@1e5e3147, org.springframework.security.web.authentication.logout.LogoutFilter@6167c42f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@565c887e, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@48d464cf, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7c359808, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7c6ab057, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c7e55a4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ae6927, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f013047, org.springframework.security.web.session.SessionManagementFilter@6c4786af, org.springframework.security.web.access.ExceptionTranslationFilter@3703a400, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6db04a6]
+2022-09-22 15:49:23.436  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-22 15:49:23.452  INFO DESKTOP-FD4DNOH --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-22 15:49:23.452  INFO DESKTOP-FD4DNOH --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 2.395 seconds (JVM running for 3.139)
+2022-09-22 15:49:40.047  INFO DESKTOP-FD4DNOH --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 15:49:40.047  INFO DESKTOP-FD4DNOH --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-22 15:49:40.047  INFO DESKTOP-FD4DNOH --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-22 15:49:53.957  INFO DESKTOP-FD4DNOH --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 17.0.3.1 on DESKTOP-FD4DNOH with PID 6108 (C:\Users\Rei\Desktop\warehouse\target\classes started by Rei in C:\Users\Rei\Desktop\warehouse)
+2022-09-22 15:49:53.972  INFO DESKTOP-FD4DNOH --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-22 15:49:54.362  INFO DESKTOP-FD4DNOH --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-22 15:49:54.377  INFO DESKTOP-FD4DNOH --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 3 ms. Found 0 JPA repository interfaces.
+2022-09-22 15:49:54.690  INFO DESKTOP-FD4DNOH --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-22 15:49:54.705  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-22 15:49:54.705  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-22 15:49:54.705  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-22 15:49:54.806  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-22 15:49:54.807  INFO DESKTOP-FD4DNOH --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 807 ms
+2022-09-22 15:49:54.937  INFO DESKTOP-FD4DNOH --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-22 15:49:55.015  INFO DESKTOP-FD4DNOH --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-22 15:49:55.177  INFO DESKTOP-FD4DNOH --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-22 15:49:55.395  INFO DESKTOP-FD4DNOH --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-22 15:49:55.458  INFO DESKTOP-FD4DNOH --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-22 15:49:55.505  INFO DESKTOP-FD4DNOH --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-22 15:49:55.520  INFO DESKTOP-FD4DNOH --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-22 15:49:55.614  INFO DESKTOP-FD4DNOH --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-22 15:49:55.661  INFO DESKTOP-FD4DNOH --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-22 15:49:55.739  INFO DESKTOP-FD4DNOH --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-22 15:49:55.755  INFO DESKTOP-FD4DNOH --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 15:49:55.911  WARN DESKTOP-FD4DNOH --- [ main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2022-09-22 15:49:55.982  WARN DESKTOP-FD4DNOH --- [ main] .s.s.UserDetailsServiceAutoConfiguration : 
+
+Using generated security password: 69ccbddb-b8e6-4976-ba36-b2e6d85476e4
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2022-09-22 15:49:56.043  INFO DESKTOP-FD4DNOH --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@ce0bbd5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@399fd710, org.springframework.security.web.context.SecurityContextPersistenceFilter@5d04fbb7, org.springframework.security.web.header.HeaderWriterFilter@55574295, org.springframework.security.web.csrf.CsrfFilter@1e5e3147, org.springframework.security.web.authentication.logout.LogoutFilter@6167c42f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@565c887e, org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter@48d464cf, org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter@7c359808, org.springframework.security.web.authentication.www.BasicAuthenticationFilter@7c6ab057, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5c7e55a4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7ae6927, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1f013047, org.springframework.security.web.session.SessionManagementFilter@6c4786af, org.springframework.security.web.access.ExceptionTranslationFilter@3703a400, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6db04a6]
+2022-09-22 15:49:56.060  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-22 15:49:56.075  INFO DESKTOP-FD4DNOH --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-22 15:49:56.075  INFO DESKTOP-FD4DNOH --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 2.411 seconds (JVM running for 3.187)
