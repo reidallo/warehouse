@@ -1,0 +1,123 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="1" author="reidallo" context="create role table">
+        <createTable tableName="wr_role">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(25)"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2" author="reidallo" context="create user table">
+        <createTable tableName="wr_user">
+            <column name="id" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(25)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="email" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="password" type="varchar(30)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="active" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="3" author="reidallo" context="create customer table">
+        <createTable tableName="wr_customer">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="first_name" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="varchar(25)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(100)"/>
+            <column name="postal_code" type="int"/>
+            <column name="city" type="varchar(50)"/>
+            <column name="state" type="varchar(50)"/>
+            <column name="phone" type="varchar(25)"/>
+            <column name="fk_user" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="wr_customer" baseColumnNames="fk_user"
+                                 constraintName="fk_user" referencedTableName="wr_user"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="4" author="reidallo" context="create order table">
+        <createTable tableName="wr_order">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_number" type="int"/>
+            <column name="submitted_date" type="date"/>
+            <column name="deadline_date" type="date"/>
+            <column name="status" type="varchar(25)"/>
+            <column name="order_price" type="decimal(9,2)"/>
+            <column name="fk_customer" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="wr_order" baseColumnNames="fk_customer"
+                                 constraintName="fk_customer" referencedTableName="wr_customer"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="5" author="reidallo" context="create inventory table">
+        <createTable tableName="wr_inventory">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="int"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="6" author="reidallo" context="create item table">
+        <createTable tableName="wr_item">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="item_quantity" type="bigint"/>
+            <column name="fk_inventory_item" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_order" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="wr_item" baseColumnNames="fk_inventory_item"
+                                 constraintName="fk_inventory_item" referencedTableName="wr_inventory"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="wr_item" baseColumnNames="fk_order"
+                                 constraintName="fk_order" referencedTableName="wr_order"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="7" author="reidallo" context="create user_role table">
+        <createTable tableName="wr_user_role">
+            <column name="fk_user" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="fk_role" type="int">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
