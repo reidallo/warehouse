@@ -228,3 +228,189 @@ This generated password is for development use only. Your security configuration
 2022-09-22 17:44:26.406  INFO DESKTOP-FD4DNOH --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
 2022-09-22 17:44:26.406  INFO DESKTOP-FD4DNOH --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
 2022-09-22 17:44:26.422  INFO DESKTOP-FD4DNOH --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 2.793 seconds (JVM running for 3.42)
+2022-09-22 20:18:35.061  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 17.0.2 on dallo with PID 4192 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-22 20:18:35.079  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-22 20:18:35.746  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-22 20:18:35.826  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 69 ms. Found 1 JPA repository interfaces.
+2022-09-22 20:18:36.490  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-22 20:18:36.510  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-22 20:18:36.512  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-22 20:18:36.512  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-22 20:18:36.693  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-22 20:18:36.694  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1577 ms
+2022-09-22 20:18:37.071  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-22 20:18:37.316  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-22 20:18:37.847  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-22 20:18:38.205  INFO dallo --- [ main] l.changelog                              : Creating database history table with name: warehouse.DATABASECHANGELOG
+2022-09-22 20:18:38.244  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-22 20:18:38.396  INFO dallo --- [ main] l.changelog                              : Table wr_role created
+2022-09-22 20:18:38.397  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::1::reidallo ran successfully in 30ms
+2022-09-22 20:18:38.476  INFO dallo --- [ main] l.changelog                              : Table wr_user created
+2022-09-22 20:18:38.477  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::2::reidallo ran successfully in 68ms
+2022-09-22 20:18:38.522  INFO dallo --- [ main] l.changelog                              : Table wr_customer created
+2022-09-22 20:18:38.689  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_customer (fk_user)
+2022-09-22 20:18:38.690  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::3::reidallo ran successfully in 205ms
+2022-09-22 20:18:38.779  INFO dallo --- [ main] l.changelog                              : Table wr_order created
+2022-09-22 20:18:38.888  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_order (fk_customer)
+2022-09-22 20:18:38.888  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::4::reidallo ran successfully in 192ms
+2022-09-22 20:18:38.927  INFO dallo --- [ main] l.changelog                              : Table wr_inventory created
+2022-09-22 20:18:38.928  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::5::reidallo ran successfully in 33ms
+2022-09-22 20:18:38.968  INFO dallo --- [ main] l.changelog                              : Table wr_item created
+2022-09-22 20:18:39.052  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_item (fk_inventory_item)
+2022-09-22 20:18:39.140  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_item (fk_order)
+2022-09-22 20:18:39.141  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::6::reidallo ran successfully in 205ms
+2022-09-22 20:18:39.184  INFO dallo --- [ main] l.changelog                              : Table wr_user_role created
+2022-09-22 20:18:39.185  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::7::reidallo ran successfully in 34ms
+2022-09-22 20:18:39.229  INFO dallo --- [ main] l.changelog                              : Columns price(decimal(9,2)) added to wr_inventory
+2022-09-22 20:18:39.230  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::8::reidallo ran successfully in 39ms
+2022-09-22 20:18:39.246  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-22 20:18:39.344  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-22 20:18:39.414  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-22 20:18:39.554  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-22 20:18:39.744  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-22 20:18:40.427  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-22 20:18:40.435  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 20:18:41.113  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@68aa1164, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1188e08b, org.springframework.security.web.context.SecurityContextPersistenceFilter@5eadc347, org.springframework.security.web.header.HeaderWriterFilter@f73a7cf, org.springframework.web.filter.CorsFilter@12e13abd, org.springframework.security.web.authentication.logout.LogoutFilter@51b2b3e6, app.warehouse.system.security.jwt.JwtFilter@839df62, app.warehouse.system.security.jwt.JwtFilter@839df62, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@78e34499, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5776a9f8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5694f6a0, org.springframework.security.web.session.SessionManagementFilter@70f0c352, org.springframework.security.web.access.ExceptionTranslationFilter@4b3eaf39, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@73502d5e]
+2022-09-22 20:18:41.222  WARN dallo --- [ main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2022-09-22 20:18:41.342  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-22 20:18:41.358  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-22 20:18:41.366  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 6.658 seconds (JVM running for 7.929)
+2022-09-22 20:34:58.519  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 20:34:58.522  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-22 20:34:58.528  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-22 20:35:03.183  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 22232 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-22 20:35:03.189  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-22 20:35:03.684  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-22 20:35:03.724  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 1 JPA repository interfaces.
+2022-09-22 20:35:04.206  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-22 20:35:04.226  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-22 20:35:04.227  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-22 20:35:04.227  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-22 20:35:04.370  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-22 20:35:04.370  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1155 ms
+2022-09-22 20:35:04.561  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-22 20:35:04.672  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-22 20:35:04.947  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-22 20:35:05.342  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-22 20:35:05.480  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-22 20:35:05.484  WARN dallo --- [ main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::1::reidallo:
+     Reason: liquibase.exception.DatabaseException: Table 'warehouse.role' doesn't exist [Failed SQL: (1146) INSERT INTO warehouse.`role` (id, name) VALUES (NULL, 'SYSTEM_ADMIN'),(NULL, 'WAREHOUSE_MANAGER'),(NULL, 'CLIENT');]
+2022-09-22 20:35:05.485  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-22 20:35:05.502  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-22 20:35:05.504  INFO dallo --- [ main] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2022-09-22 20:35:05.516  INFO dallo --- [ main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-22 20:35:05.540 ERROR dallo --- [ main] o.s.b.SpringApplication                  : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::1::reidallo:
+     Reason: liquibase.exception.DatabaseException: Table 'warehouse.role' doesn't exist [Failed SQL: (1146) INSERT INTO warehouse.`role` (id, name) VALUES (NULL, 'SYSTEM_ADMIN'),(NULL, 'WAREHOUSE_MANAGER'),(NULL, 'CLIENT');]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at app.warehouse.system.WarehouseApplication.main(WarehouseApplication.java:10)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::1::reidallo:
+     Reason: liquibase.exception.DatabaseException: Table 'warehouse.role' doesn't exist [Failed SQL: (1146) INSERT INTO warehouse.`role` (id, name) VALUES (NULL, 'SYSTEM_ADMIN'),(NULL, 'WAREHOUSE_MANAGER'),(NULL, 'CLIENT');]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126)
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:265)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:264)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2405)
+	at liquibase.Liquibase.update(Liquibase.java:211)
+	at liquibase.Liquibase.update(Liquibase.java:197)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 more
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::1::reidallo:
+     Reason: liquibase.exception.DatabaseException: Table 'warehouse.role' doesn't exist [Failed SQL: (1146) INSERT INTO warehouse.`role` (id, name) VALUES (NULL, 'SYSTEM_ADMIN'),(NULL, 'WAREHOUSE_MANAGER'),(NULL, 'CLIENT');]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:696)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.Scope.child(Scope.java:247)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65)
+	... 36 more
+Caused by: liquibase.exception.DatabaseException: Table 'warehouse.role' doesn't exist [Failed SQL: (1146) INSERT INTO warehouse.`role` (id, name) VALUES (NULL, 'SYSTEM_ADMIN'),(NULL, 'WAREHOUSE_MANAGER'),(NULL, 'CLIENT');]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:397)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:151)
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1279)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1261)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:661)
+	... 56 more
+Caused by: java.sql.SQLSyntaxErrorException: Table 'warehouse.role' doesn't exist
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:393)
+	... 61 more
+2022-09-22 20:36:17.194  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 9056 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-22 20:36:17.200  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-22 20:36:17.660  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-22 20:36:17.699  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 33 ms. Found 1 JPA repository interfaces.
+2022-09-22 20:36:18.076  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-22 20:36:18.089  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-22 20:36:18.089  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-22 20:36:18.090  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-22 20:36:18.314  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-22 20:36:18.314  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1087 ms
+2022-09-22 20:36:18.474  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-22 20:36:18.647  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-22 20:36:18.856  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-22 20:36:19.234  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-22 20:36:19.324  INFO dallo --- [ main] l.changelog                              : Data loaded from 'liquibase/data/role.csv' into table 'wr_role'
+2022-09-22 20:36:19.350  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-load-data.xml::1::reidallo ran successfully in 39ms
+2022-09-22 20:36:19.374  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-22 20:36:19.484  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-22 20:36:19.591  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-22 20:36:19.794  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-22 20:36:19.917  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-22 20:36:20.493  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-22 20:36:20.508  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 20:36:21.025  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@259ae1a9, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@d082916, org.springframework.security.web.context.SecurityContextPersistenceFilter@1e284d90, org.springframework.security.web.header.HeaderWriterFilter@6414eb98, org.springframework.web.filter.CorsFilter@67201002, org.springframework.security.web.authentication.logout.LogoutFilter@10264cb0, app.warehouse.system.security.jwt.JwtFilter@196624bf, app.warehouse.system.security.jwt.JwtFilter@196624bf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@31ecd003, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5d3d5242, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6ddc9001, org.springframework.security.web.session.SessionManagementFilter@fe337, org.springframework.security.web.access.ExceptionTranslationFilter@768f2398, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6a7b4ff5]
+2022-09-22 20:36:21.132  WARN dallo --- [ main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2022-09-22 20:36:21.219  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-22 20:36:21.233  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-22 20:36:21.242  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 4.311 seconds (JVM running for 5.553)
