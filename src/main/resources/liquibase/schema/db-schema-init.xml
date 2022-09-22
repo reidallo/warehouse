@@ -14,7 +14,7 @@
 
     <changeSet id="2" author="reidallo" context="create user table">
         <createTable tableName="wr_user">
-            <column name="id" type="int">
+            <column name="id" type="int" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="username" type="varchar(25)">
@@ -126,4 +126,9 @@
             <column name="price" type="decimal(9,2)"/>
         </addColumn>
     </changeSet>
+
+    <changeSet id="9" author="reidallo" context="change password column data type">
+        <modifyDataType tableName="wr_user" columnName="password" newDataType="char(100)"/>
+    </changeSet>
+
 </databaseChangeLog>
