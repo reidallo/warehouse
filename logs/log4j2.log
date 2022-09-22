@@ -1894,3 +1894,32 @@ java.lang.IllegalStateException: User with email: rei.dallo@hotmail.com already 
 2022-09-22 23:00:24.831  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
 2022-09-22 23:00:24.834  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
 2022-09-22 23:00:51.027  WARN dallo --- [nio-8080-exec-3] o.a.c.u.SessionIdGeneratorBase           : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [182] milliseconds.
+2022-09-22 23:17:44.584  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 23:17:44.594  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-22 23:17:44.678  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-22 23:17:51.291  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 9776 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-22 23:17:51.297  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-22 23:17:51.812  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-22 23:17:51.862  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 44 ms. Found 3 JPA repository interfaces.
+2022-09-22 23:17:52.303  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-22 23:17:52.318  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-22 23:17:52.318  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-22 23:17:52.318  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-22 23:17:52.456  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-22 23:17:52.456  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1129 ms
+2022-09-22 23:17:52.629  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-22 23:17:52.729  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-22 23:17:52.951  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-22 23:17:53.284  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-22 23:17:53.369  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-22 23:17:53.432  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-22 23:17:53.502  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-22 23:17:53.651  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-22 23:17:53.739  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-22 23:17:54.198  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-22 23:17:54.205  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-22 23:17:54.712  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@d91e8c7, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5b9ca528, org.springframework.security.web.context.SecurityContextPersistenceFilter@14f254f, org.springframework.security.web.header.HeaderWriterFilter@4917992b, org.springframework.web.filter.CorsFilter@66011fbc, org.springframework.security.web.authentication.logout.LogoutFilter@5cbebfba, app.warehouse.system.security.jwt.JwtFilter@4b56b031, app.warehouse.system.security.jwt.JwtFilter@4b56b031, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4df54c1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@785477e5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@77afdbc5, org.springframework.security.web.session.SessionManagementFilter@7bf997e0, org.springframework.security.web.access.ExceptionTranslationFilter@c040c8d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@69c7eafd]
+2022-09-22 23:17:54.800  WARN dallo --- [ main] ion$DefaultTemplateResolverConfiguration : Cannot find template location: classpath:/templates/ (please add some templates, check your Thymeleaf configuration, or set spring.thymeleaf.check-template-location=false)
+2022-09-22 23:17:54.880  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-22 23:17:54.892  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-22 23:17:54.901  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 3.886 seconds (JVM running for 4.943)
