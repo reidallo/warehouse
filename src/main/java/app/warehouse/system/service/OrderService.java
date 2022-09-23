@@ -13,4 +13,6 @@ public interface OrderService {
     MessageHandler addItemToOrder(Long orderId, Set<ItemDto> itemDtoSet);
 
     MessageHandler removeItemFromOrder(Long orderId, Set<ItemDto> itemDtoSet);
+
+    MessageHandler cancelOrder(Long orderId);
 }

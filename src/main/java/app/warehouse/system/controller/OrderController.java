@@ -30,4 +30,9 @@ public class OrderController {
     public MessageHandler removeItemFromOrder(@RequestParam Long orderId, @RequestBody Set<ItemDto> itemDtoSet) {
         return orderService.removeItemFromOrder(orderId, itemDtoSet);
     }
+
+    @PutMapping(value = "/cancel")
+    public MessageHandler cancelOrder(@RequestParam Long orderId) {
+        return orderService.cancelOrder(orderId);
+    }
 }

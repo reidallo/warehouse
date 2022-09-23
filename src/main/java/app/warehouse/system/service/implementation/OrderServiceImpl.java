@@ -129,6 +129,26 @@ public class OrderServiceImpl implements OrderService {
         return new MessageHandler(MessageHandler.hashMap);
     }
 
+    @Override
+    public MessageHandler cancelOrder(Long orderId) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+
+        if (!order.getOrderStatus().equals(OrderStatus.FULFILLED) && !order.getOrderStatus().equals(OrderStatus.CANCELED)
+                && !order.getOrderStatus().equals(OrderStatus.UNDER_DELIVERY)) {
+            order.setOrderStatus(OrderStatus.CANCELED);
+            orderRepository.save(order);
+        }
+        else {
+            MessageHandler.message(MessageStatus.ERROR, "You can not cancel this order!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "canceled"));
+        return new MessageHandler(MessageHandler.hashMap);
+    }
+
     double calculateItemsPrice(Set<ItemDto> itemDtoList) {
 
         double totalPrice = 0.0;
