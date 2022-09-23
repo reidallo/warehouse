@@ -131,4 +131,18 @@
         <modifyDataType tableName="wr_user" columnName="password" newDataType="char(100)"/>
     </changeSet>
 
+    <changeSet id="10" author="reidallo" context="add order_quantity column at wr_order">
+        <addColumn tableName="wr_order">
+            <column name="order_quantity" type="int"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="11" author="reidallo" context="change order_number column type">
+        <modifyDataType tableName="wr_order" columnName="order_number" newDataType="uuid"/>
+    </changeSet>
+
+    <changeSet id="12" author="reidallo" context="change order_number column type">
+        <modifyDataType tableName="wr_order" columnName="order_number" newDataType="varchar(24)"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.Set;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,7 +20,7 @@ public class Order {
     @Column(name = "id")
     private Long orderId;
     @Column(name = "order_number")
-    private Long orderNumber;
+    private String orderNumber;
     @Column(name = "submitted_date")
     private Date submitDate;
     @Column(name = "deadline_date")
@@ -34,4 +35,6 @@ public class Order {
     private Customer customer;
     @OneToMany(mappedBy = "order")
     private Set<Item> orderItems;
+    @Column(name = "order_quantity")
+    private Long orderQuantity;
 }

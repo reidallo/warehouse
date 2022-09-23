@@ -13,4 +13,15 @@
         </loadData>
     </changeSet>
 
+    <changeSet id="2" author="reidallo" context="load inventory into the warehouse">
+        <loadData file="liquibase/data/inventory.csv"
+                  tableName="wr_inventory">
+            <column name="id" type="int" />
+            <column name="name" type="varchar(50)" />
+            <column name="quantity" type="int" />
+            <column name="name" type="varchar(50)" />
+            <column name="price" type="double(9,2)" />
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>
