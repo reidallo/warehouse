@@ -6,8 +6,8 @@ import app.warehouse.system.model.Inventory;
 import app.warehouse.system.model.Item;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Component
 public class ItemMapperImpl implements ItemMapper {
@@ -35,8 +35,8 @@ public class ItemMapperImpl implements ItemMapper {
     }
 
     @Override
-    public List<Item> toEntityList(List<ItemDto> dtoList) {
-        List<Item> entityList = new ArrayList<>();
+    public Set<Item> toEntitySet(Set<ItemDto> dtoList) {
+        Set<Item> entityList = new HashSet<>();
         dtoList.forEach(dto -> entityList.add(toEntity(dto)));
         return entityList;
     }

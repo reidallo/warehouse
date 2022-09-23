@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 @Component
 public class OrderMapperImpl implements OrderMapper {
@@ -32,7 +32,7 @@ public class OrderMapperImpl implements OrderMapper {
     }
 
     @Override
-    public List<Order> toEntityList(List<OrderDto> dtoList) {
+    public Set<Order> toEntitySet(Set<OrderDto> dtoList) {
         return null;
     }
 }

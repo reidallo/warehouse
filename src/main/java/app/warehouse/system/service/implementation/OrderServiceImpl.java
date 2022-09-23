@@ -23,8 +23,8 @@ import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Locale;
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -42,7 +42,7 @@ public class OrderServiceImpl implements OrderService {
     public MessageHandler addNewOrder(OrderDto orderDto) throws ParseException {
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
-        List<ItemDto> itemsDto = orderDto.getOrderItems();
+        Set<ItemDto> itemsDto = orderDto.getOrderItems();
         Double totalPrice = calculateItemsPrice(itemsDto);
         Long orderQuantity = calculateOrderQuantity(itemsDto);
 
@@ -59,19 +59,52 @@ public class OrderServiceImpl implements OrderService {
         order.setCustomer(customer);
         orderRepository.save(order);
 
-        List<Item> items = itemMapper.toEntityList(itemsDto);
-        items.forEach(item -> item.setOrder(order));
-        order.setOrderItems(new HashSet<>(items));
-        itemRepository.saveAll(items);
+        Set<Item> itemList = itemMapper.toEntitySet(itemsDto);
+        itemList.forEach(item -> item.setOrder(order));
+        order.setOrderItems(new HashSet<>(itemList));
+        itemRepository.saveAll(itemList);
 
         MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "created"));
         return new MessageHandler(MessageHandler.hashMap);
     }
 
-    double calculateItemsPrice(List<ItemDto> itemDtos) {
+    @Override
+    @Transactional
+    public MessageHandler addItemToOrder(Long orderId, Set<ItemDto> itemDtoSet) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+
+        if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
+
+            Double orderPrice = calculateItemsPrice(itemDtoSet);
+            Long orderQuantity = calculateOrderQuantity(itemDtoSet);
+            Set<Item> itemSet = itemMapper.toEntitySet(itemDtoSet);
+            itemSet.forEach(item -> item.setOrder(order));
+            itemRepository.saveAll(itemSet);
+
+            order.setOrderPrice(order.getOrderPrice() + orderPrice);
+            order.setOrderQuantity(order.getOrderQuantity() + orderQuantity);
+            orderRepository.save(order);
+        } else {
+            MessageHandler.message(MessageStatus.ERROR, "You can only update an order with status CREATED/CANCELED!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "updated"));
+        return new MessageHandler(MessageHandler.hashMap);
+    }
+
+    @Override
+    public MessageHandler removeItemFromOrder(Long orderId, Set<ItemDto> itemDtoSet) {
+
+        return null;
+    }
+
+    double calculateItemsPrice(Set<ItemDto> itemDtoList) {
 
         double totalPrice = 0.0;
-        for (ItemDto itemDto: itemDtos) {
+        for (ItemDto itemDto: itemDtoList) {
             Inventory inventory = inventoryRepository.findById(itemDto.getInventoryId()).orElseThrow(() ->
                     new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Item")));
             if (itemDto.getItemQuantity() > inventory.getQuantity())
@@ -81,10 +114,10 @@ public class OrderServiceImpl implements OrderService {
         return totalPrice;
     }
 
-    long calculateOrderQuantity(List<ItemDto> itemDtos) {
+    long calculateOrderQuantity(Set<ItemDto> itemDtoList) {
 
         long orderQuantity = 0;
-        for (ItemDto itemDto: itemDtos) {
+        for (ItemDto itemDto: itemDtoList) {
             orderQuantity += itemDto.getItemQuantity();
         }
         return orderQuantity;

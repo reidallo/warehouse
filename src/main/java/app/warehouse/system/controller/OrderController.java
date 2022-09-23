@@ -1,15 +1,14 @@
 package app.warehouse.system.controller;
 
+import app.warehouse.system.dto.ItemDto;
 import app.warehouse.system.dto.OrderDto;
 import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.service.OrderService;
 import lombok.AllArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/api/order")
@@ -21,5 +20,10 @@ public class OrderController {
     @PostMapping(value = "/new")
     public MessageHandler addNewOrder(@RequestBody OrderDto orderDto) throws ParseException {
         return orderService.addNewOrder(orderDto);
+    }
+
+    @PostMapping(value = "/add/item")
+    public MessageHandler addItemToOrder(@RequestParam Long orderId, @RequestBody Set<ItemDto> itemDtoSet) {
+        return orderService.addItemToOrder(orderId, itemDtoSet);
     }
 }

@@ -3,7 +3,7 @@ package app.warehouse.system.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -16,5 +16,5 @@ public class OrderDto {
     private String orderStatus;
     private Double orderPrice;
     private Long customerId;
-    private List<ItemDto> orderItems;
+    private Set<ItemDto> orderItems;
 }
