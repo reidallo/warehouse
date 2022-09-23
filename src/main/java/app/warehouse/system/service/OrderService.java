@@ -15,4 +15,6 @@ public interface OrderService {
     MessageHandler removeItemFromOrder(Long orderId, Set<ItemDto> itemDtoSet);
 
     MessageHandler cancelOrder(Long orderId);
+
+    MessageHandler submitOrder(Long orderId);
 }

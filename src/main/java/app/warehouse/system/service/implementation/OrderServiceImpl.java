@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -149,7 +150,27 @@ public class OrderServiceImpl implements OrderService {
         return new MessageHandler(MessageHandler.hashMap);
     }
 
-    double calculateItemsPrice(Set<ItemDto> itemDtoList) {
+    @Override
+    public MessageHandler submitOrder(Long orderId) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+
+        if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.DECLINED)) {
+            order.setOrderStatus(OrderStatus.AWAITING_APORVAL);
+            order.setSubmitDate(new Date());
+            orderRepository.save(order);
+        }
+        else {
+            MessageHandler.message(MessageStatus.ERROR, "You can not submit this order!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "submitted"));
+        return new MessageHandler(MessageHandler.hashMap);
+    }
+
+    private double calculateItemsPrice(Set<ItemDto> itemDtoList) {
 
         double totalPrice = 0.0;
         for (ItemDto itemDto: itemDtoList) {
@@ -162,7 +183,7 @@ public class OrderServiceImpl implements OrderService {
         return totalPrice;
     }
 
-    long calculateItemsQuantity(Set<ItemDto> itemDtoList) {
+    private long calculateItemsQuantity(Set<ItemDto> itemDtoList) {
 
         long orderQuantity = 0;
         for (ItemDto itemDto: itemDtoList) {

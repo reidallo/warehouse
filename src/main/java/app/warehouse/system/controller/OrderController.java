@@ -35,4 +35,9 @@ public class OrderController {
     public MessageHandler cancelOrder(@RequestParam Long orderId) {
         return orderService.cancelOrder(orderId);
     }
+
+    @PutMapping(value = "/submit")
+    public MessageHandler submitOrder(@RequestParam Long orderId) {
+        return orderService.submitOrder(orderId);
+    }
 }
