@@ -26,4 +26,9 @@ public class OrderController {
     public MessageHandler addItemToOrder(@RequestParam Long orderId, @RequestBody Set<ItemDto> itemDtoSet) {
         return orderService.addItemToOrder(orderId, itemDtoSet);
     }
+
+    @PutMapping(value = "/remove/item")
+    public MessageHandler removeItemFromOrder(@RequestParam Long orderId, @RequestBody Set<ItemDto> itemDtoSet) {
+        return orderService.removeItemFromOrder(orderId, itemDtoSet);
+    }
 }
