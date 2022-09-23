@@ -14,15 +14,20 @@ import java.util.Set;
 public class OrderMapperImpl implements OrderMapper {
 
     @Override
-    public Order toEntity(OrderDto dto) throws ParseException {
+    public Order toEntity(OrderDto dto) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         if (dto == null)
             return null;
         Order entity = new Order();
         if (dto.getOrderId() != null)
             entity.setOrderId(dto.getOrderId());
-        if (dto.getDeadlineDate() != null)
-            entity.setDeadlineDate(dateFormat.parse(dto.getDeadlineDate()));
+        if (dto.getDeadlineDate() != null) {
+            try {
+                entity.setDeadlineDate(dateFormat.parse(dto.getDeadlineDate()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
         return entity;
     }
 

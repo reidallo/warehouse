@@ -39,7 +39,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public MessageHandler addNewOrder(OrderDto orderDto) throws ParseException {
+    public MessageHandler addNewOrder(OrderDto orderDto){
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Set<ItemDto> itemsDto = orderDto.getOrderItems();
@@ -49,7 +49,11 @@ public class OrderServiceImpl implements OrderService {
         Order order = new Order();
         order.setOrderStatus(OrderStatus.CREATED);
         order.setOrderNumber(RandomStringUtils.random(24, false, true));
-        order.setDeadlineDate(dateFormat.parse(orderDto.getDeadlineDate()));
+        try {
+            order.setDeadlineDate(dateFormat.parse(orderDto.getDeadlineDate()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         order.setOrderPrice(totalPrice);
         order.setOrderQuantity(orderQuantity);
         Long userId = userRepository.getUserId(LoggedUser.loggedInUsername()).orElseThrow(() ->

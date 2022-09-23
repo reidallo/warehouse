@@ -4,6 +4,7 @@ import app.warehouse.system.dto.ItemDto;
 import app.warehouse.system.mapper.ItemMapper;
 import app.warehouse.system.model.Inventory;
 import app.warehouse.system.model.Item;
+import app.warehouse.system.model.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.HashSet;
@@ -25,6 +26,11 @@ public class ItemMapperImpl implements ItemMapper {
             Inventory inventory = new Inventory();
             inventory.setInventoryId(dto.getInventoryId());
             entity.setInventory(inventory);
+        }
+        if (dto.getOrderId() != null) {
+            Order order = new Order();
+            order.setOrderId(dto.getOrderId());
+            entity.setOrder(order);
         }
         return entity;
     }

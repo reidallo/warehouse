@@ -7,7 +7,6 @@ import app.warehouse.system.service.OrderService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
 import java.util.Set;
 
 @RestController
@@ -18,7 +17,7 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping(value = "/new")
-    public MessageHandler addNewOrder(@RequestBody OrderDto orderDto) throws ParseException {
+    public MessageHandler addNewOrder(@RequestBody OrderDto orderDto) {
         return orderService.addNewOrder(orderDto);
     }
 

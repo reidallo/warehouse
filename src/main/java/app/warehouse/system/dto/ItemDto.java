@@ -10,4 +10,5 @@ public class ItemDto {
     private Long itemId;
     private Integer itemQuantity;
     private Long inventoryId;
+    private Long orderId;
 }
