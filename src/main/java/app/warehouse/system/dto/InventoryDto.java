@@ -11,4 +11,5 @@ public class InventoryDto {
     private String name;
     private Long quantity;
     private Double price;
+    private boolean active;
 }
