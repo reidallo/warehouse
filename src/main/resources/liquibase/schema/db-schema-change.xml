@@ -13,4 +13,46 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="3" author="reidallo" context="create wr_truck table">
+        <createTable tableName="wr_truck">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="chassis_number" type="varchar(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="license_plate" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="active" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="reidallo" context="create wr_delivery table">
+        <createTable tableName="wr_delivery">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="delivery_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_code" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="fk_order" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_truck" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="wr_delivery" baseColumnNames="fk_order"
+                                 constraintName="fk_delivery_order" referencedTableName="wr_order"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="wr_delivery" baseColumnNames="fk_truck"
+                                 constraintName="fk_delivery_truck" referencedTableName="wr_truck"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
 </databaseChangeLog>
