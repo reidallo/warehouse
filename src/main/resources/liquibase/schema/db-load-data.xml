@@ -24,4 +24,14 @@
         </loadData>
     </changeSet>
 
+    <changeSet id="3" author="reidallo" context="load trucks into the warehouse">
+        <loadData file="liquibase/data/truck.csv"
+                  tableName="wr_truck">
+            <column name="id" type="int" />
+            <column name="chassis_number" type="varchar(100)" />
+            <column name="license_plate" type="varchar(50)" />
+            <column name="active" type="boolean" />
+        </loadData>
+    </changeSet>
+
 </databaseChangeLog>

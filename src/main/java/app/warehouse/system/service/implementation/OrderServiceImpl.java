@@ -86,6 +86,9 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.findById(orderId).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
 
+        String username = order.getCustomer().getUser().getUsername();
+        checkAccess(username);
+
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
 
             Double orderPrice = calculateItemsPrice(itemDtoSet);
@@ -112,6 +115,9 @@ public class OrderServiceImpl implements OrderService {
 
         Order order = orderRepository.findById(orderId).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+
+        String username = order.getCustomer().getUser().getUsername();
+        checkAccess(username);
 
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
 
@@ -142,6 +148,9 @@ public class OrderServiceImpl implements OrderService {
         Order order = orderRepository.findById(orderId).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
 
+        String username = order.getCustomer().getUser().getUsername();
+        checkAccess(username);
+
         if (!order.getOrderStatus().equals(OrderStatus.FULFILLED) && !order.getOrderStatus().equals(OrderStatus.CANCELED)
                 && !order.getOrderStatus().equals(OrderStatus.UNDER_DELIVERY)) {
             order.setOrderStatus(OrderStatus.CANCELED);
@@ -161,6 +170,9 @@ public class OrderServiceImpl implements OrderService {
 
         Order order = orderRepository.findById(orderId).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+
+        String username = order.getCustomer().getUser().getUsername();
+        checkAccess(username);
 
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.DECLINED)) {
             order.setOrderStatus(OrderStatus.AWAITING_APPROVAL);
@@ -270,6 +282,12 @@ public class OrderServiceImpl implements OrderService {
             orderQuantity += itemDto.getItemQuantity();
         }
         return orderQuantity;
+    }
+
+    private void checkAccess(String username) {
+        String loggedUsername = LoggedUser.loggedInUsername();
+        if (!loggedUsername.equals(username))
+            throw new ExceptionHandler(ExceptionHandler.NO_ACCESS);
     }
 
     private void sendEmailMessage(String firstName, String lastName, String orderNumber, String message, String email) {
