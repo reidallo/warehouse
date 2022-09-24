@@ -12,5 +12,4 @@ public class OrderDtoOut {
     private String deadlineDate;
     private String orderStatus;
     private Double orderPrice;
-    private Long customerId;
 }

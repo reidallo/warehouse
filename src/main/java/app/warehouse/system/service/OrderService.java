@@ -2,6 +2,7 @@ package app.warehouse.system.service;
 
 import app.warehouse.system.dto.ItemDto;
 import app.warehouse.system.dto.OrderDtoIn;
+import app.warehouse.system.dto.OrderDtoOut;
 import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.statics.OrderStatus;
 import org.springframework.data.domain.Page;
@@ -21,4 +22,6 @@ public interface OrderService {
     MessageHandler submitOrder(Long orderId);
 
     Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
+
+    Page<OrderDtoOut> getAllOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
 }

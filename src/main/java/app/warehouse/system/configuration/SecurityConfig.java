@@ -44,8 +44,10 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/api/user/register", "/api/user/login")
                 .permitAll()
-                .antMatchers("/api/order/new", "/api/order/add/item",
-                        "/api/remove/item", "/api/order/cancel", "/api/order/submit").hasRole("CLIENT")
+                .antMatchers("/api/order/add", "/api/order/add/item",
+                        "/api/order/remove/item", "/api/order/cancel",
+                        "/api/order/submit", "/api/order/user").hasRole("CLIENT")
+                .antMatchers("/api/order/").hasRole("WAREHOUSE_MANAGER")
                 .anyRequest().authenticated()
                 .and().logout()
                 .logoutUrl("/logout")

@@ -1,6 +1,7 @@
 package app.warehouse.system.mapper.implementation;
 
 import app.warehouse.system.dto.OrderDtoIn;
+import app.warehouse.system.dto.OrderDtoOut;
 import app.warehouse.system.mapper.ItemMapper;
 import app.warehouse.system.mapper.OrderMapper;
 import app.warehouse.system.model.Order;
@@ -75,6 +76,32 @@ public class OrderMapperImpl implements OrderMapper {
     public Set<OrderDtoIn> toDtoSet(Set<Order> entitySet) {
         Set<OrderDtoIn> dtoSet = new HashSet<>();
         entitySet.forEach(entity -> dtoSet.add(toDto(entity)));
+        return dtoSet;
+    }
+
+    @Override
+    public OrderDtoOut toDtoOut(Order entity) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        if (entity == null)
+            return null;
+        OrderDtoOut dto = new OrderDtoOut();
+        if (entity.getOrderStatus() != null)
+            dto.setOrderStatus(entity.getOrderStatus().toString());
+        if (entity.getDeadlineDate() != null)
+            dto.setDeadlineDate(dateFormat.format(entity.getDeadlineDate()));
+        if (entity.getOrderPrice() != null)
+            dto.setOrderPrice(entity.getOrderPrice());
+        if (entity.getOrderNumber() != null)
+            dto.setOrderNumber(entity.getOrderNumber());
+        if (entity.getSubmitDate() != null)
+            dto.setSubmitDate(dateFormat.format(entity.getSubmitDate()));
+        return dto;
+    }
+
+    @Override
+    public Set<OrderDtoOut> toDtoOutSet(Set<Order> entitySet) {
+        Set<OrderDtoOut> dtoSet = new HashSet<>();
+        entitySet.forEach(entity -> dtoSet.add(toDtoOut(entity)));
         return dtoSet;
     }
 }

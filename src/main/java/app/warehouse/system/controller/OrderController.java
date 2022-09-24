@@ -2,6 +2,7 @@ package app.warehouse.system.controller;
 
 import app.warehouse.system.dto.ItemDto;
 import app.warehouse.system.dto.OrderDtoIn;
+import app.warehouse.system.dto.OrderDtoOut;
 import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.service.OrderService;
 import app.warehouse.system.statics.OrderStatus;
@@ -19,16 +20,25 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @GetMapping(value = "/")
+    @GetMapping(value = "/all")
+    public ResponseEntity<Page<OrderDtoOut>> getAllOrders(
+            @RequestParam(defaultValue = "0") Integer pageNo,
+            @RequestParam(defaultValue = "5") Integer pageSize,
+            @RequestParam(defaultValue = "submitDate") String sortBy,
+            @RequestParam(required = false, name = "orderStatus") OrderStatus orderStatus) {
+        return ResponseEntity.ok(orderService.getAllOrders(orderStatus, pageNo, pageSize, sortBy));
+    }
+
+    @GetMapping(value = "/user")
     public ResponseEntity<Page<OrderDtoIn>> getUserOrders(
             @RequestParam(defaultValue = "0") Integer pageNo,
-            @RequestParam(defaultValue = "2") Integer pageSize,
+            @RequestParam(defaultValue = "5") Integer pageSize,
             @RequestParam(defaultValue = "orderStatus") String sortBy,
             @RequestParam(required = false, name = "orderStatus") OrderStatus orderStatus) {
         return ResponseEntity.ok(orderService.getUserOrders(orderStatus, pageNo, pageSize, sortBy));
     }
 
-    @PostMapping(value = "/new")
+    @PostMapping(value = "/add")
     public MessageHandler addNewOrder(@RequestBody OrderDtoIn orderDto) {
         return orderService.addNewOrder(orderDto);
     }

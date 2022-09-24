@@ -2,6 +2,7 @@ package app.warehouse.system.service.implementation;
 
 import app.warehouse.system.dto.ItemDto;
 import app.warehouse.system.dto.OrderDtoIn;
+import app.warehouse.system.dto.OrderDtoOut;
 import app.warehouse.system.exception.ExceptionHandler;
 import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.exception.Messages;
@@ -179,6 +180,20 @@ public class OrderServiceImpl implements OrderService {
         else
             pagedResult = orderRepository.filterOrderByUser(user.getUserId(), pageable);
         return pagedResult.map(orderMapper::toDto);
+    }
+
+    @Override
+    public Page<OrderDtoOut> getAllOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy) {
+        User user = userRepository.findUserByUsername(LoggedUser.loggedInUsername()).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "User")));
+        Set<Role> roles = user.getRoles();
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.DESC, sortBy));
+        Page<Order> pagedResult;
+        if (orderStatus != null)
+            pagedResult = orderRepository.filterOrderByStatus(orderStatus, pageable);
+        else
+            pagedResult = orderRepository.findAll(pageable);
+        return pagedResult.map(orderMapper::toDtoOut);
     }
 
     private double calculateItemsPrice(Set<ItemDto> itemDtoList) {
