@@ -1,14 +1,16 @@
 package app.warehouse.system.service;
 
 import app.warehouse.system.dto.ItemDto;
-import app.warehouse.system.dto.OrderDto;
+import app.warehouse.system.dto.OrderDtoIn;
 import app.warehouse.system.exception.MessageHandler;
+import app.warehouse.system.statics.OrderStatus;
+import org.springframework.data.domain.Page;
 
 import java.util.Set;
 
 public interface OrderService {
 
-    MessageHandler addNewOrder(OrderDto orderDto);
+    MessageHandler addNewOrder(OrderDtoIn orderDto);
 
     MessageHandler addItemToOrder(Long orderId, Set<ItemDto> itemDtoSet);
 
@@ -17,4 +19,6 @@ public interface OrderService {
     MessageHandler cancelOrder(Long orderId);
 
     MessageHandler submitOrder(Long orderId);
+
+    Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
 }

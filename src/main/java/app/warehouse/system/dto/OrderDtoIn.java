@@ -7,7 +7,7 @@ import java.util.Set;
 
 @Getter
 @Setter
-public class OrderDto {
+public class OrderDtoIn {
 
     private Long orderId;
     private String orderNumber;
@@ -17,4 +17,5 @@ public class OrderDto {
     private Double orderPrice;
     private Long customerId;
     private Set<ItemDto> orderItems;
+    private Long orderQuantity;
 }

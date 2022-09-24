@@ -1,20 +1,26 @@
 package app.warehouse.system.mapper.implementation;
 
-import app.warehouse.system.dto.OrderDto;
+import app.warehouse.system.dto.OrderDtoIn;
+import app.warehouse.system.mapper.ItemMapper;
 import app.warehouse.system.mapper.OrderMapper;
 import app.warehouse.system.model.Order;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
 @Component
+@AllArgsConstructor
 public class OrderMapperImpl implements OrderMapper {
 
+    private final ItemMapper itemMapper;
+
     @Override
-    public Order toEntity(OrderDto dto) {
+    public Order toEntity(OrderDtoIn dto) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         if (dto == null)
             return null;
@@ -32,12 +38,43 @@ public class OrderMapperImpl implements OrderMapper {
     }
 
     @Override
-    public OrderDto toDto(Order entity) {
-        return null;
+    public OrderDtoIn toDto(Order entity) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        if (entity == null)
+             return null;
+        OrderDtoIn dto = new OrderDtoIn();
+        if (entity.getOrderId() != null)
+            dto.setOrderId(entity.getOrderId());
+        if (entity.getOrderStatus() != null)
+            dto.setOrderStatus(entity.getOrderStatus().toString());
+        if (entity.getDeadlineDate() != null)
+            dto.setDeadlineDate(dateFormat.format(entity.getDeadlineDate()));
+        if (entity.getOrderPrice() != null)
+            dto.setOrderPrice(entity.getOrderPrice());
+        if (entity.getOrderQuantity() != null)
+            dto.setOrderQuantity(entity.getOrderQuantity());
+        if (entity.getOrderNumber() != null)
+            dto.setOrderNumber(entity.getOrderNumber());
+        if (entity.getSubmitDate() != null)
+            dto.setSubmitDate(dateFormat.format(entity.getSubmitDate()));
+        if (entity.getOrderItems() != null)
+            dto.setOrderItems(itemMapper.toDtoSet(entity.getOrderItems()));
+        if (entity.getCustomer() != null)
+            dto.setCustomerId(entity.getCustomer().getCustomerId());
+        return dto;
     }
 
     @Override
-    public Set<Order> toEntitySet(Set<OrderDto> dtoList) {
-        return null;
+    public Set<Order> toEntitySet(Set<OrderDtoIn> dtoSet) {
+        Set<Order> entitySet = new HashSet<>();
+        dtoSet.forEach(dto -> entitySet.add(toEntity(dto)));
+        return entitySet;
+    }
+
+    @Override
+    public Set<OrderDtoIn> toDtoSet(Set<Order> entitySet) {
+        Set<OrderDtoIn> dtoSet = new HashSet<>();
+        entitySet.forEach(entity -> dtoSet.add(toDto(entity)));
+        return dtoSet;
     }
 }

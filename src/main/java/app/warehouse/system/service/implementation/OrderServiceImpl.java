@@ -1,38 +1,35 @@
 package app.warehouse.system.service.implementation;
 
 import app.warehouse.system.dto.ItemDto;
-import app.warehouse.system.dto.OrderDto;
+import app.warehouse.system.dto.OrderDtoIn;
 import app.warehouse.system.exception.ExceptionHandler;
 import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.exception.Messages;
 import app.warehouse.system.logged.LoggedUser;
 import app.warehouse.system.mapper.ItemMapper;
-import app.warehouse.system.model.Customer;
-import app.warehouse.system.model.Inventory;
-import app.warehouse.system.model.Item;
-import app.warehouse.system.model.Order;
+import app.warehouse.system.mapper.OrderMapper;
+import app.warehouse.system.model.*;
 import app.warehouse.system.repository.*;
 import app.warehouse.system.service.OrderService;
 import app.warehouse.system.statics.MessageStatus;
 import app.warehouse.system.statics.OrderStatus;
 import liquibase.repackaged.org.apache.commons.lang3.RandomStringUtils;
 import lombok.AllArgsConstructor;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
 public class OrderServiceImpl implements OrderService {
 
-    private final InventoryRepository inventoryRepository;
     private final ItemMapper itemMapper;
+    private final OrderMapper orderMapper;
+    private final InventoryRepository inventoryRepository;
     private final CustomerRepository customerRepository;
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
@@ -40,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     @Transactional
-    public MessageHandler addNewOrder(OrderDto orderDto){
+    public MessageHandler addNewOrder(OrderDtoIn orderDto){
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
         Set<ItemDto> itemsDto = orderDto.getOrderItems();
@@ -157,7 +154,7 @@ public class OrderServiceImpl implements OrderService {
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
 
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.DECLINED)) {
-            order.setOrderStatus(OrderStatus.AWAITING_APORVAL);
+            order.setOrderStatus(OrderStatus.AWAITING_APPROVAL);
             order.setSubmitDate(new Date());
             orderRepository.save(order);
         }
@@ -168,6 +165,20 @@ public class OrderServiceImpl implements OrderService {
 
         MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "submitted"));
         return new MessageHandler(MessageHandler.hashMap);
+    }
+
+    @Override
+    public Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy) {
+
+        User user = userRepository.findUserByUsername(LoggedUser.loggedInUsername()).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "User")));
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.ASC, sortBy));
+        Page<Order> pagedResult;
+        if (orderStatus != null)
+            pagedResult = orderRepository.filterOrderByStatusAndUser(orderStatus, user.getUserId(), pageable);
+        else
+            pagedResult = orderRepository.filterOrderByUser(user.getUserId(), pageable);
+        return pagedResult.map(orderMapper::toDto);
     }
 
     private double calculateItemsPrice(Set<ItemDto> itemDtoList) {

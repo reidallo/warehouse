@@ -37,13 +37,31 @@ public class ItemMapperImpl implements ItemMapper {
 
     @Override
     public ItemDto toDto(Item entity) {
-        return null;
+        if (entity == null)
+             return null;
+        ItemDto dto = new ItemDto();
+        if (entity.getItemId() != null)
+            dto.setItemId(entity.getItemId());
+        if (entity.getItemQuantity() != null)
+            dto.setItemQuantity(entity.getItemQuantity());
+        if (entity.getOrder() != null)
+            dto.setOrderId(entity.getOrder().getOrderId());
+        if (entity.getInventory() != null)
+            dto.setInventoryId(entity.getInventory().getInventoryId());
+        return dto;
     }
 
     @Override
-    public Set<Item> toEntitySet(Set<ItemDto> dtoList) {
-        Set<Item> entityList = new HashSet<>();
-        dtoList.forEach(dto -> entityList.add(toEntity(dto)));
-        return entityList;
+    public Set<Item> toEntitySet(Set<ItemDto> dtoSet) {
+        Set<Item> entitySet = new HashSet<>();
+        dtoSet.forEach(dto -> entitySet.add(toEntity(dto)));
+        return entitySet;
+    }
+
+    @Override
+    public Set<ItemDto> toDtoSet(Set<Item> entitySet) {
+        Set<ItemDto> dtoSet = new HashSet<>();
+        entitySet.forEach(entity -> dtoSet.add(toDto(entity)));
+        return dtoSet;
     }
 }

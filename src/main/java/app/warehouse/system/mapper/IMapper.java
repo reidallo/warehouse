@@ -6,5 +6,6 @@ public interface IMapper<E, D> {
 
     E toEntity(D dto);
     D toDto(E entity);
-    Set<E> toEntitySet(Set<D> dtoList);
+    Set<E> toEntitySet(Set<D> dtoSet);
+    Set<D> toDtoSet(Set<E> entitySet);
 }
