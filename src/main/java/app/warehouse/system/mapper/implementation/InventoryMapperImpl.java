@@ -24,6 +24,7 @@ public class InventoryMapperImpl implements InventoryMapper {
             entity.setPrice(dto.getPrice());
         if (dto.getQuantity() != null)
             entity.setQuantity(dto.getQuantity());
+        entity.setActive(dto.isActive());
         return entity;
     }
 
@@ -40,6 +41,7 @@ public class InventoryMapperImpl implements InventoryMapper {
             dto.setPrice(entity.getPrice());
         if (entity.getQuantity() != null)
             dto.setQuantity(entity.getQuantity());
+        dto.setActive(entity.isActive());
         return dto;
     }
 
