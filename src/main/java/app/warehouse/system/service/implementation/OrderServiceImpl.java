@@ -17,8 +17,14 @@ import app.warehouse.system.statics.OrderStatus;
 import liquibase.repackaged.org.apache.commons.lang3.RandomStringUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.context.Context;
+import org.thymeleaf.spring5.SpringTemplateEngine;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,6 +41,8 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
+    private final JavaMailSender mailSender;
+    private final SpringTemplateEngine templateEngine;
 
     @Override
     @Transactional
@@ -169,6 +177,48 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public MessageHandler approveOrder(Long orderId) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+
+        if (order.getOrderStatus().equals(OrderStatus.AWAITING_APPROVAL)) {
+            order.setOrderStatus(OrderStatus.APPROVED);
+            orderRepository.save(order);
+        }
+        else {
+            MessageHandler.message(MessageStatus.ERROR, "You can not approve this order!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "approved"));
+        return new MessageHandler(MessageHandler.hashMap);
+    }
+
+    @Override
+    public MessageHandler declineOrder(Long orderId, String message) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+        String userEmail = order.getCustomer().getUser().getEmail();
+
+        if (order.getOrderStatus().equals(OrderStatus.AWAITING_APPROVAL)) {
+            order.setOrderStatus(OrderStatus.DECLINED);
+            if (message != null)
+                sendEmailMessage(order.getCustomer().getFirstName(), order.getCustomer().getLastName(),
+                        order.getOrderNumber(), message, userEmail);
+            orderRepository.save(order);
+        }
+        else {
+            MessageHandler.message(MessageStatus.ERROR, "You can not decline this order!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "declined"));
+        return new MessageHandler(MessageHandler.hashMap);
+    }
+
+    @Override
     public Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy) {
 
         User user = userRepository.findUserByUsername(LoggedUser.loggedInUsername()).orElseThrow(() ->
@@ -220,5 +270,30 @@ public class OrderServiceImpl implements OrderService {
             orderQuantity += itemDto.getItemQuantity();
         }
         return orderQuantity;
+    }
+
+    private void sendEmailMessage(String firstName, String lastName, String orderNumber, String message, String email) {
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("firstName", firstName);
+        model.put("lastName", lastName);
+        model.put("orderNumber", orderNumber);
+        model.put("message", message);
+
+        Context context = new Context();
+        context.setVariables(model);
+
+        try {
+            messageHelper.setTo(email);
+            messageHelper.setSubject("Warehouse Team - Declined Order");
+            messageHelper.setText(templateEngine.process("template-declined-order", context), true);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        mailSender.send(mimeMessage);
     }
 }

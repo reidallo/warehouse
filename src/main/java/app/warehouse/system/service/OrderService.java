@@ -21,6 +21,10 @@ public interface OrderService {
 
     MessageHandler submitOrder(Long orderId);
 
+    MessageHandler approveOrder(Long orderId);
+
+    MessageHandler declineOrder(Long orderId, String message);
+
     Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
 
     Page<OrderDtoOut> getAllOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);

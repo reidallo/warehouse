@@ -49,22 +49,38 @@ public class OrderController {
     }
 
     @PostMapping(value = "/add/item")
-    public MessageHandler addItemToOrder(@RequestParam Long orderId, @RequestBody Set<ItemDto> itemDtoSet) {
+    public MessageHandler addItemToOrder(
+            @RequestParam(name = "orderId") Long orderId,
+            @RequestBody Set<ItemDto> itemDtoSet) {
         return orderService.addItemToOrder(orderId, itemDtoSet);
     }
 
     @PutMapping(value = "/remove/item")
-    public MessageHandler removeItemFromOrder(@RequestParam Long orderId, @RequestBody Set<ItemDto> itemDtoSet) {
+    public MessageHandler removeItemFromOrder(
+            @RequestParam(name = "orderId") Long orderId,
+            @RequestBody Set<ItemDto> itemDtoSet) {
         return orderService.removeItemFromOrder(orderId, itemDtoSet);
     }
 
     @PutMapping(value = "/cancel")
-    public MessageHandler cancelOrder(@RequestParam Long orderId) {
+    public MessageHandler cancelOrder(@RequestParam(name = "orderId") Long orderId) {
         return orderService.cancelOrder(orderId);
     }
 
     @PutMapping(value = "/submit")
-    public MessageHandler submitOrder(@RequestParam Long orderId) {
+    public MessageHandler submitOrder(@RequestParam(name = "orderId") Long orderId) {
         return orderService.submitOrder(orderId);
+    }
+
+    @PutMapping(value = "/approve")
+    public MessageHandler approveOrder(@RequestParam(name = "orderId") Long orderId) {
+        return orderService.approveOrder(orderId);
+    }
+
+    @PutMapping(value = "/decline")
+    public MessageHandler declineOrder(
+            @RequestParam(name = "orderId") Long orderId,
+            @RequestParam(name = "message", required = false) String message) {
+        return orderService.declineOrder(orderId, message);
     }
 }
