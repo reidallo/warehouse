@@ -1,6 +1,11 @@
-id,name,quantity,price
-,Hand Trucks,24,150
-,Forklift,4,1200
-,Belt Conveyor,50,15
-,Chain Conveyor,49,12
-,Waste Container,33,5
+id,name,quantity,price,active
+,Hand Trucks,24,150,1
+,Forklift,4,1200,1
+,Belt Conveyor,50,15,1
+,Chain Conveyor,49,12,1
+,Waste Container,33,5,1
+,Walkie Stackers,15,20,1
+,Pallet Jack,29,200,1
+,Vertical Conveyor,2,450,1
+,Cranes,1,20000,1
+,Dock Plate,5,1000,1

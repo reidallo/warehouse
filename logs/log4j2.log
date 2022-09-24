@@ -13409,3 +13409,341 @@ Consider defining a bean of type 'org.springframework.mail.javamail.JavaMailSend
 2022-09-24 18:15:11.847  INFO dallo --- [nio-8080-exec-3] o.s.w.s.DispatcherServlet                : Completed initialization in 1 ms
 2022-09-24 18:15:12.409  WARN dallo --- [nio-8080-exec-3] o.a.c.u.SessionIdGeneratorBase           : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [114] milliseconds.
 2022-09-24 18:31:29.531  WARN dallo --- [l-1 housekeeper] c.z.h.p.HikariPool                       : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m33s470ms575µs200ns).
+2022-09-24 18:35:01.201  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-24 18:35:01.217  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-24 18:35:01.246  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-24 18:35:06.859  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 26652 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-24 18:35:06.865  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-24 18:35:07.427  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-24 18:35:07.505  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 72 ms. Found 6 JPA repository interfaces.
+2022-09-24 18:35:07.956  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-24 18:35:07.976  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:35:07.977  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-24 18:35:07.977  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-24 18:35:08.194  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-24 18:35:08.195  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1292 ms
+2022-09-24 18:35:08.420  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-24 18:35:08.583  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-24 18:35:08.903  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-24 18:35:09.347  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-24 18:35:09.469  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-24 18:35:09.547  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-24 18:35:09.651  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-24 18:35:09.860  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-24 18:35:09.955  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-24 18:35:10.501  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-24 18:35:10.508  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-24 18:35:11.300  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@34c050a1, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7ecf4608, org.springframework.security.web.context.SecurityContextPersistenceFilter@59b43e35, org.springframework.security.web.header.HeaderWriterFilter@22f1a340, org.springframework.web.filter.CorsFilter@32c114d9, org.springframework.security.web.authentication.logout.LogoutFilter@63767d, app.warehouse.system.security.jwt.JwtFilter@4fba8eec, app.warehouse.system.security.jwt.JwtFilter@4fba8eec, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1d7f2719, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@685e5967, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@73f6ffb1, org.springframework.security.web.session.SessionManagementFilter@f461c9c, org.springframework.security.web.access.ExceptionTranslationFilter@49314684, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@564e9c0b]
+2022-09-24 18:35:11.468  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:35:11.483  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-24 18:35:11.490  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 4.92 seconds (JVM running for 6.089)
+2022-09-24 18:40:24.456  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-24 18:40:24.459  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-24 18:40:24.469  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-24 18:40:29.644  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 27644 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-24 18:40:29.650  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-24 18:40:30.360  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-24 18:40:30.436  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 70 ms. Found 6 JPA repository interfaces.
+2022-09-24 18:40:30.842  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-24 18:40:30.854  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:40:30.854  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-24 18:40:30.854  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-24 18:40:31.071  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-24 18:40:31.072  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1395 ms
+2022-09-24 18:40:31.241  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-24 18:40:31.394  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-24 18:40:31.635  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-24 18:40:31.995  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-24 18:40:32.478  INFO dallo --- [ main] l.changelog                              : Columns active(boolean) added to wr_inventory
+2022-09-24 18:40:32.481  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-change.xml::2::reidallo ran successfully in 329ms
+2022-09-24 18:40:32.500  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-24 18:40:32.576  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-24 18:40:32.606  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-24 18:40:32.722  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-24 18:40:32.794  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-24 18:40:33.238  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-24 18:40:33.245  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-24 18:40:34.010  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@2e549515, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2c34ce24, org.springframework.security.web.context.SecurityContextPersistenceFilter@5a106b26, org.springframework.security.web.header.HeaderWriterFilter@7057d9f4, org.springframework.web.filter.CorsFilter@58f8ce0f, org.springframework.security.web.authentication.logout.LogoutFilter@3ed3e66d, app.warehouse.system.security.jwt.JwtFilter@1d15c0a1, app.warehouse.system.security.jwt.JwtFilter@1d15c0a1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@16eca98a, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@119f035f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31406eab, org.springframework.security.web.session.SessionManagementFilter@14f1545c, org.springframework.security.web.access.ExceptionTranslationFilter@6418075c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@283595db]
+2022-09-24 18:40:34.232  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:40:34.251  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-24 18:40:34.263  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 4.892 seconds (JVM running for 5.976)
+2022-09-24 18:41:41.301  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-24 18:41:41.304  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-24 18:41:41.312  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-24 18:41:44.533  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 25884 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-24 18:41:44.539  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-24 18:41:45.033  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-24 18:41:45.098  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 60 ms. Found 6 JPA repository interfaces.
+2022-09-24 18:41:45.476  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-24 18:41:45.486  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:41:45.486  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-24 18:41:45.487  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-24 18:41:45.683  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-24 18:41:45.683  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1118 ms
+2022-09-24 18:41:45.836  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-24 18:41:45.930  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-24 18:41:46.115  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-24 18:41:46.448  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-24 18:41:46.534  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-24 18:41:46.538  WARN dallo --- [ main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          liquibase/schema/db-load-data.xml::2::reidallo was: 8:b1a53d75ded101866c1748f8f9c2c4e2 but is now: 8:adff9f533ae821a0bec74ce9566f8156
+
+2022-09-24 18:41:46.538  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-24 18:41:46.547  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-24 18:41:46.549  INFO dallo --- [ main] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2022-09-24 18:41:46.559  INFO dallo --- [ main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-24 18:41:46.586 ERROR dallo --- [ main] o.s.b.SpringApplication                  : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          liquibase/schema/db-load-data.xml::2::reidallo was: 8:b1a53d75ded101866c1748f8f9c2c4e2 but is now: 8:adff9f533ae821a0bec74ce9566f8156
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at app.warehouse.system.WarehouseApplication.main(WarehouseApplication.java:10)
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          liquibase/schema/db-load-data.xml::2::reidallo was: 8:b1a53d75ded101866c1748f8f9c2c4e2 but is now: 8:adff9f533ae821a0bec74ce9566f8156
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:296)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:231)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2405)
+	at liquibase.Liquibase.update(Liquibase.java:211)
+	at liquibase.Liquibase.update(Liquibase.java:197)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 more
+2022-09-24 18:47:28.293  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 17228 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-24 18:47:28.299  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-24 18:47:28.850  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-24 18:47:28.923  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 67 ms. Found 6 JPA repository interfaces.
+2022-09-24 18:47:29.304  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-24 18:47:29.313  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:47:29.314  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-24 18:47:29.315  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-24 18:47:29.458  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-24 18:47:29.458  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1125 ms
+2022-09-24 18:47:29.615  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-24 18:47:29.775  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-24 18:47:30.085  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-24 18:47:30.384  INFO dallo --- [ main] l.changelog                              : Creating database history table with name: warehouse.DATABASECHANGELOG
+2022-09-24 18:47:30.521  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-24 18:47:30.642  WARN dallo --- [ main] l.changelog                              : modifyDataType will lose primary key/autoincrement/not null settings for mysql.  Use <sql> and re-specify all configuration if this is the case
+2022-09-24 18:47:30.642  WARN dallo --- [ main] l.changelog                              : modifyDataType will lose primary key/autoincrement/not null settings for mysql.  Use <sql> and re-specify all configuration if this is the case
+2022-09-24 18:47:30.695  INFO dallo --- [ main] l.changelog                              : Table wr_role created
+2022-09-24 18:47:30.695  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::1::reidallo ran successfully in 31ms
+2022-09-24 18:47:30.789  INFO dallo --- [ main] l.changelog                              : Table wr_user created
+2022-09-24 18:47:30.790  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::2::reidallo ran successfully in 86ms
+2022-09-24 18:47:30.842  INFO dallo --- [ main] l.changelog                              : Table wr_customer created
+2022-09-24 18:47:30.973  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_customer (fk_user)
+2022-09-24 18:47:30.975  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::3::reidallo ran successfully in 176ms
+2022-09-24 18:47:31.048  INFO dallo --- [ main] l.changelog                              : Table wr_order created
+2022-09-24 18:47:31.174  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_order (fk_customer)
+2022-09-24 18:47:31.176  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::4::reidallo ran successfully in 192ms
+2022-09-24 18:47:31.222  INFO dallo --- [ main] l.changelog                              : Table wr_inventory created
+2022-09-24 18:47:31.223  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::5::reidallo ran successfully in 38ms
+2022-09-24 18:47:31.272  INFO dallo --- [ main] l.changelog                              : Table wr_item created
+2022-09-24 18:47:31.390  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_item (fk_inventory_item)
+2022-09-24 18:47:31.583  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_item (fk_order)
+2022-09-24 18:47:31.583  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::6::reidallo ran successfully in 353ms
+2022-09-24 18:47:31.626  INFO dallo --- [ main] l.changelog                              : Table wr_user_role created
+2022-09-24 18:47:31.627  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::7::reidallo ran successfully in 36ms
+2022-09-24 18:47:31.667  INFO dallo --- [ main] l.changelog                              : Columns price(decimal(9,2)) added to wr_inventory
+2022-09-24 18:47:31.668  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::8::reidallo ran successfully in 33ms
+2022-09-24 18:47:31.793  INFO dallo --- [ main] l.changelog                              : wr_user.password datatype was changed to char(100)
+2022-09-24 18:47:31.793  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::9::reidallo ran successfully in 118ms
+2022-09-24 18:47:31.855  INFO dallo --- [ main] l.changelog                              : Columns order_quantity(int) added to wr_order
+2022-09-24 18:47:31.855  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::10::reidallo ran successfully in 53ms
+2022-09-24 18:47:32.003  INFO dallo --- [ main] l.changelog                              : wr_order.order_number datatype was changed to uuid
+2022-09-24 18:47:32.005  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::11::reidallo ran successfully in 141ms
+2022-09-24 18:47:32.142  INFO dallo --- [ main] l.changelog                              : wr_order.order_number datatype was changed to varchar(24)
+2022-09-24 18:47:32.143  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::12::reidallo ran successfully in 130ms
+2022-09-24 18:47:32.193  INFO dallo --- [ main] l.changelog                              : Data loaded from 'liquibase/data/role.csv' into table 'wr_role'
+2022-09-24 18:47:32.198  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-load-data.xml::1::reidallo ran successfully in 46ms
+2022-09-24 18:47:32.249 ERROR dallo --- [ main] l.change                                 : Unable to find column 'active' in table 'wr_inventory'
+2022-09-24 18:47:32.261  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-24 18:47:32.265  WARN dallo --- [ main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::2::reidallo:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'active' in 'field list' [Failed SQL: (1054) INSERT INTO warehouse.wr_inventory (id, name, quantity, price, active) VALUES (NULL, 'Hand Trucks', '24', '150', '1'),(NULL, 'Forklift', '4', '1200', '1'),(NULL, 'Belt Conveyor', '50', '15', '1'),(NULL, 'Chain Conveyor', '49', '12', '1'),(NULL, 'Waste Container', '33', '5', '1'),(NULL, 'Walkie Stackers', '15', '20', '1'),(NULL, 'Pallet Jack', '29', '200', '1'),(NULL, 'Vertical Conveyor', '2', '450', '1'),(NULL, 'Cranes', '1', '20000', '1'),(NULL, 'Dock Plate', '5', '1000', '1');]
+2022-09-24 18:47:32.265  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-24 18:47:32.276  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-24 18:47:32.279  INFO dallo --- [ main] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2022-09-24 18:47:32.290  INFO dallo --- [ main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-24 18:47:32.310 ERROR dallo --- [ main] o.s.b.SpringApplication                  : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::2::reidallo:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'active' in 'field list' [Failed SQL: (1054) INSERT INTO warehouse.wr_inventory (id, name, quantity, price, active) VALUES (NULL, 'Hand Trucks', '24', '150', '1'),(NULL, 'Forklift', '4', '1200', '1'),(NULL, 'Belt Conveyor', '50', '15', '1'),(NULL, 'Chain Conveyor', '49', '12', '1'),(NULL, 'Waste Container', '33', '5', '1'),(NULL, 'Walkie Stackers', '15', '20', '1'),(NULL, 'Pallet Jack', '29', '200', '1'),(NULL, 'Vertical Conveyor', '2', '450', '1'),(NULL, 'Cranes', '1', '20000', '1'),(NULL, 'Dock Plate', '5', '1000', '1');]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at app.warehouse.system.WarehouseApplication.main(WarehouseApplication.java:10)
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::2::reidallo:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'active' in 'field list' [Failed SQL: (1054) INSERT INTO warehouse.wr_inventory (id, name, quantity, price, active) VALUES (NULL, 'Hand Trucks', '24', '150', '1'),(NULL, 'Forklift', '4', '1200', '1'),(NULL, 'Belt Conveyor', '50', '15', '1'),(NULL, 'Chain Conveyor', '49', '12', '1'),(NULL, 'Waste Container', '33', '5', '1'),(NULL, 'Walkie Stackers', '15', '20', '1'),(NULL, 'Pallet Jack', '29', '200', '1'),(NULL, 'Vertical Conveyor', '2', '450', '1'),(NULL, 'Cranes', '1', '20000', '1'),(NULL, 'Dock Plate', '5', '1000', '1');]
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:126)
+	at liquibase.Liquibase.lambda$null$0(Liquibase.java:265)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:264)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2405)
+	at liquibase.Liquibase.update(Liquibase.java:211)
+	at liquibase.Liquibase.update(Liquibase.java:197)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 more
+Caused by: liquibase.exception.MigrationFailedException: Migration failed for change set liquibase/schema/db-load-data.xml::2::reidallo:
+     Reason: liquibase.exception.DatabaseException: Unknown column 'active' in 'field list' [Failed SQL: (1054) INSERT INTO warehouse.wr_inventory (id, name, quantity, price, active) VALUES (NULL, 'Hand Trucks', '24', '150', '1'),(NULL, 'Forklift', '4', '1200', '1'),(NULL, 'Belt Conveyor', '50', '15', '1'),(NULL, 'Chain Conveyor', '49', '12', '1'),(NULL, 'Waste Container', '33', '5', '1'),(NULL, 'Walkie Stackers', '15', '20', '1'),(NULL, 'Pallet Jack', '29', '200', '1'),(NULL, 'Vertical Conveyor', '2', '450', '1'),(NULL, 'Cranes', '1', '20000', '1'),(NULL, 'Dock Plate', '5', '1000', '1');]
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:696)
+	at liquibase.changelog.visitor.UpdateVisitor.visit(UpdateVisitor.java:56)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$null$0(ChangeLogIterator.java:113)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.changelog.ChangeLogIterator$2.lambda$run$1(ChangeLogIterator.java:112)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.changelog.ChangeLogIterator$2.run(ChangeLogIterator.java:93)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Scope.child(Scope.java:243)
+	at liquibase.Scope.child(Scope.java:247)
+	at liquibase.changelog.ChangeLogIterator.run(ChangeLogIterator.java:65)
+	... 36 more
+Caused by: liquibase.exception.DatabaseException: Unknown column 'active' in 'field list' [Failed SQL: (1054) INSERT INTO warehouse.wr_inventory (id, name, quantity, price, active) VALUES (NULL, 'Hand Trucks', '24', '150', '1'),(NULL, 'Forklift', '4', '1200', '1'),(NULL, 'Belt Conveyor', '50', '15', '1'),(NULL, 'Chain Conveyor', '49', '12', '1'),(NULL, 'Waste Container', '33', '5', '1'),(NULL, 'Walkie Stackers', '15', '20', '1'),(NULL, 'Pallet Jack', '29', '200', '1'),(NULL, 'Vertical Conveyor', '2', '450', '1'),(NULL, 'Cranes', '1', '20000', '1'),(NULL, 'Dock Plate', '5', '1000', '1');]
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:397)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:83)
+	at liquibase.executor.jvm.JdbcExecutor.execute(JdbcExecutor.java:151)
+	at liquibase.database.AbstractJdbcDatabase.execute(AbstractJdbcDatabase.java:1279)
+	at liquibase.database.AbstractJdbcDatabase.executeStatements(AbstractJdbcDatabase.java:1261)
+	at liquibase.changelog.ChangeSet.execute(ChangeSet.java:661)
+	... 56 more
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'active' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.StatementImpl.executeInternal(StatementImpl.java:763)
+	at com.mysql.cj.jdbc.StatementImpl.execute(StatementImpl.java:648)
+	at com.zaxxer.hikari.pool.ProxyStatement.execute(ProxyStatement.java:94)
+	at com.zaxxer.hikari.pool.HikariProxyStatement.execute(HikariProxyStatement.java)
+	at liquibase.executor.jvm.JdbcExecutor$ExecuteStatementCallback.doInStatement(JdbcExecutor.java:393)
+	... 61 more
+2022-09-24 18:48:37.474  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 10188 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-24 18:48:37.481  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-24 18:48:38.054  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-24 18:48:38.119  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 58 ms. Found 6 JPA repository interfaces.
+2022-09-24 18:48:38.519  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-24 18:48:38.530  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:48:38.530  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-24 18:48:38.531  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-24 18:48:38.755  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-24 18:48:38.756  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1240 ms
+2022-09-24 18:48:38.929  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-24 18:48:39.128  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-24 18:48:39.366  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-24 18:48:39.615  INFO dallo --- [ main] l.changelog                              : Creating database history table with name: warehouse.DATABASECHANGELOG
+2022-09-24 18:48:39.647  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-24 18:48:39.754  WARN dallo --- [ main] l.changelog                              : modifyDataType will lose primary key/autoincrement/not null settings for mysql.  Use <sql> and re-specify all configuration if this is the case
+2022-09-24 18:48:39.755  WARN dallo --- [ main] l.changelog                              : modifyDataType will lose primary key/autoincrement/not null settings for mysql.  Use <sql> and re-specify all configuration if this is the case
+2022-09-24 18:48:39.813  INFO dallo --- [ main] l.changelog                              : Table wr_role created
+2022-09-24 18:48:39.814  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::1::reidallo ran successfully in 33ms
+2022-09-24 18:48:39.877  INFO dallo --- [ main] l.changelog                              : Table wr_user created
+2022-09-24 18:48:39.878  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::2::reidallo ran successfully in 56ms
+2022-09-24 18:48:39.928  INFO dallo --- [ main] l.changelog                              : Table wr_customer created
+2022-09-24 18:48:40.072  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_customer (fk_user)
+2022-09-24 18:48:40.073  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::3::reidallo ran successfully in 186ms
+2022-09-24 18:48:40.157  INFO dallo --- [ main] l.changelog                              : Table wr_order created
+2022-09-24 18:48:40.288  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_order (fk_customer)
+2022-09-24 18:48:40.289  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::4::reidallo ran successfully in 202ms
+2022-09-24 18:48:40.361  INFO dallo --- [ main] l.changelog                              : Table wr_inventory created
+2022-09-24 18:48:40.363  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::5::reidallo ran successfully in 65ms
+2022-09-24 18:48:40.411  INFO dallo --- [ main] l.changelog                              : Table wr_item created
+2022-09-24 18:48:40.544  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_item (fk_inventory_item)
+2022-09-24 18:48:40.635  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_item (fk_order)
+2022-09-24 18:48:40.636  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::6::reidallo ran successfully in 264ms
+2022-09-24 18:48:40.669  INFO dallo --- [ main] l.changelog                              : Table wr_user_role created
+2022-09-24 18:48:40.669  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::7::reidallo ran successfully in 28ms
+2022-09-24 18:48:40.706  INFO dallo --- [ main] l.changelog                              : Columns price(decimal(9,2)) added to wr_inventory
+2022-09-24 18:48:40.707  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::8::reidallo ran successfully in 31ms
+2022-09-24 18:48:40.835  INFO dallo --- [ main] l.changelog                              : wr_user.password datatype was changed to char(100)
+2022-09-24 18:48:40.835  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::9::reidallo ran successfully in 120ms
+2022-09-24 18:48:40.873  INFO dallo --- [ main] l.changelog                              : Columns order_quantity(int) added to wr_order
+2022-09-24 18:48:40.874  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::10::reidallo ran successfully in 31ms
+2022-09-24 18:48:40.996  INFO dallo --- [ main] l.changelog                              : wr_order.order_number datatype was changed to uuid
+2022-09-24 18:48:40.997  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::11::reidallo ran successfully in 115ms
+2022-09-24 18:48:41.211  INFO dallo --- [ main] l.changelog                              : wr_order.order_number datatype was changed to varchar(24)
+2022-09-24 18:48:41.212  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-init.xml::12::reidallo ran successfully in 206ms
+2022-09-24 18:48:41.264  INFO dallo --- [ main] l.changelog                              : Unique constraint added to wr_order(order_number)
+2022-09-24 18:48:41.265  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-change.xml::1::reidallo ran successfully in 44ms
+2022-09-24 18:48:41.311  INFO dallo --- [ main] l.changelog                              : Columns active(boolean) added to wr_inventory
+2022-09-24 18:48:41.312  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-change.xml::2::reidallo ran successfully in 38ms
+2022-09-24 18:48:41.350  INFO dallo --- [ main] l.changelog                              : Data loaded from 'liquibase/data/role.csv' into table 'wr_role'
+2022-09-24 18:48:41.354  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-load-data.xml::1::reidallo ran successfully in 33ms
+2022-09-24 18:48:41.402  INFO dallo --- [ main] l.changelog                              : Data loaded from 'liquibase/data/inventory.csv' into table 'wr_inventory'
+2022-09-24 18:48:41.406  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-load-data.xml::2::reidallo ran successfully in 44ms
+2022-09-24 18:48:41.419  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-24 18:48:41.488  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-24 18:48:41.526  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-24 18:48:41.631  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-24 18:48:41.702  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-24 18:48:42.137  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-24 18:48:42.144  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-24 18:48:42.855  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1df60140, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@62d4dac4, org.springframework.security.web.context.SecurityContextPersistenceFilter@106c3e0a, org.springframework.security.web.header.HeaderWriterFilter@449f9628, org.springframework.web.filter.CorsFilter@11efa76e, org.springframework.security.web.authentication.logout.LogoutFilter@381c826c, app.warehouse.system.security.jwt.JwtFilter@7455dacb, app.warehouse.system.security.jwt.JwtFilter@7455dacb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@154cbb46, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@58fbecde, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35c83c56, org.springframework.security.web.session.SessionManagementFilter@5dfc7b3f, org.springframework.security.web.access.ExceptionTranslationFilter@28901fe7, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@631c6ef4]
+2022-09-24 18:48:43.028  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-24 18:48:43.044  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-24 18:48:43.053  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 5.859 seconds (JVM running for 6.847)
+2022-09-24 18:50:04.112  INFO dallo --- [nio-8080-exec-2] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-24 18:50:04.113  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-24 18:50:04.115  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2022-09-24 18:51:39.043  WARN dallo --- [nio-8080-exec-6] o.a.c.u.SessionIdGeneratorBase           : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [254] milliseconds.

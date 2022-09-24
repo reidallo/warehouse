@@ -7,4 +7,10 @@
         <addUniqueConstraint tableName="wr_order" columnNames="order_number"/>
     </changeSet>
 
+    <changeSet id="2" author="reidallo" context="add column active at wr_inventory">
+        <addColumn tableName="wr_inventory">
+            <column name="active" type="boolean"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>
