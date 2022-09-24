@@ -61,4 +61,16 @@ public class InventoryServiceImpl implements InventoryService {
         MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Inventory Item", "updated"));
         return new MessageHandler(MessageHandler.hashMap);
     }
+
+    @Override
+    public MessageHandler disableInventory(Long inventoryId) {
+
+        Inventory inventory = inventoryRepository.findById(inventoryId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Inventory item")));
+        inventory.setActive(false);
+        inventoryRepository.save(inventory);
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Inventory Item", "disabled"));
+        return new MessageHandler(MessageHandler.hashMap);
+    }
 }

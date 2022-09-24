@@ -11,4 +11,6 @@ public interface InventoryService {
     InventoryDto getInventoryById(Long inventoryId);
 
     MessageHandler updateInventory(InventoryDto inventoryDto);
+
+    MessageHandler disableInventory(Long inventoryId);
 }

@@ -32,4 +32,9 @@ public class InventoryController {
     public MessageHandler updateInventory(@RequestBody InventoryDto inventoryDto) {
         return inventoryService.updateInventory(inventoryDto);
     }
+
+    @PutMapping(value = "/disable")
+    public MessageHandler disableInventory(@RequestParam(name = "inventoryId") Long inventoryId) {
+        return inventoryService.disableInventory(inventoryId);
+    }
 }
