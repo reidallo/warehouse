@@ -7,4 +7,5 @@
 
     <include file="liquibase/schema/db-schema-init.xml"/>
     <include file="liquibase/schema/db-load-data.xml"/>
+    <include file="liquibase/schema/db-schema-change.xml"/>
 </databaseChangeLog>
