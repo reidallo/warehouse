@@ -29,6 +29,11 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getAllOrders(orderStatus, pageNo, pageSize, sortBy));
     }
 
+    @GetMapping(value = "/id")
+    public ResponseEntity<OrderDtoIn> getOrderById(@RequestParam(name = "orderId") Long orderId) {
+        return ResponseEntity.ok(orderService.getOrderById(orderId));
+    }
+
     @GetMapping(value = "/user")
     public ResponseEntity<Page<OrderDtoIn>> getUserOrders(
             @RequestParam(defaultValue = "0") Integer pageNo,

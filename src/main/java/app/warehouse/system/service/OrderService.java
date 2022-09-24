@@ -24,4 +24,6 @@ public interface OrderService {
     Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
 
     Page<OrderDtoOut> getAllOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
+
+    OrderDtoIn getOrderById(Long orderId);
 }

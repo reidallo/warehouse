@@ -184,9 +184,6 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Page<OrderDtoOut> getAllOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy) {
-        User user = userRepository.findUserByUsername(LoggedUser.loggedInUsername()).orElseThrow(() ->
-                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "User")));
-        Set<Role> roles = user.getRoles();
         Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.DESC, sortBy));
         Page<Order> pagedResult;
         if (orderStatus != null)
@@ -194,6 +191,13 @@ public class OrderServiceImpl implements OrderService {
         else
             pagedResult = orderRepository.findAll(pageable);
         return pagedResult.map(orderMapper::toDtoOut);
+    }
+
+    @Override
+    public OrderDtoIn getOrderById(Long orderId) {
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+        return orderMapper.toDto(order);
     }
 
     private double calculateItemsPrice(Set<ItemDto> itemDtoList) {
