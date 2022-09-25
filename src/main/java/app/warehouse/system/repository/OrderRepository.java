@@ -7,6 +7,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.util.List;
+
 public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("SELECT o FROM Order o WHERE o.orderStatus = ?1")
@@ -17,4 +19,9 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
 
     @Query("SELECT o FROM Order o WHERE o.customer.user.userId = ?1")
     Page<Order> filterOrderByUser(Long userId, Pageable pageable);
+
+    @Query(value = "SELECT o.* FROM warehouse.wr_order o \n" +
+            "LEFT JOIN warehouse.wr_customer c ON o.fk_customer = c.id LEFT JOIN warehouse.wr_user u ON c.fk_user = u.id " +
+            "WHERE u.id = 2", nativeQuery = true)
+    List<Order> getAllOrdersOfUser(Long userId);
 }

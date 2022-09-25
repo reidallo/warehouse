@@ -24,6 +24,7 @@ import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor
@@ -256,7 +257,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy) {
+    public Page<OrderDtoIn> getOrdersOfLoggedUser(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy) {
 
         User user = userRepository.findUserByUsername(LoggedUser.loggedInUsername()).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "User")));
@@ -278,6 +279,12 @@ public class OrderServiceImpl implements OrderService {
         else
             pagedResult = orderRepository.findAll(pageable);
         return pagedResult.map(orderMapper::toDtoOut);
+    }
+
+    @Override
+    public List<OrderDtoOut> getOrdersOfUser(Long userId) {
+        return orderRepository.getAllOrdersOfUser(userId).stream().map(orderMapper::toDtoOut)
+                .collect(Collectors.toList());
     }
 
     @Override

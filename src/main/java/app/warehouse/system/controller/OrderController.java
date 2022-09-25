@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -29,18 +30,23 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getAllOrders(orderStatus, pageNo, pageSize, sortBy));
     }
 
+    @GetMapping(value = "/user")
+    public ResponseEntity<List<OrderDtoOut>> getAllOrdersOfUser(@RequestParam(name = "userId") Long userId) {
+        return ResponseEntity.ok(orderService.getOrdersOfUser(userId));
+    }
+
     @GetMapping(value = "/id")
     public ResponseEntity<OrderDtoIn> getOrderById(@RequestParam(name = "orderId") Long orderId) {
         return ResponseEntity.ok(orderService.getOrderById(orderId));
     }
 
-    @GetMapping(value = "/user")
+    @GetMapping(value = "/user/logged")
     public ResponseEntity<Page<OrderDtoIn>> getUserOrders(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "5") Integer pageSize,
             @RequestParam(defaultValue = "orderStatus") String sortBy,
             @RequestParam(required = false, name = "orderStatus") OrderStatus orderStatus) {
-        return ResponseEntity.ok(orderService.getUserOrders(orderStatus, pageNo, pageSize, sortBy));
+        return ResponseEntity.ok(orderService.getOrdersOfLoggedUser(orderStatus, pageNo, pageSize, sortBy));
     }
 
     @PostMapping(value = "/add")

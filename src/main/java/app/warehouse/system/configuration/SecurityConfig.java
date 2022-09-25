@@ -46,8 +46,8 @@ public class SecurityConfig {
                 .permitAll()
                 .antMatchers("/api/order/add", "/api/order/add/item",
                         "/api/order/remove/item", "/api/order/cancel",
-                        "/api/order/submit", "/api/order/user").hasAuthority("CLIENT")
-                .antMatchers("/api/order/", "/api/order/id", "/api/order/approve",
+                        "/api/order/submit", "/api/order/user/logged").hasAuthority("CLIENT")
+                .antMatchers("/api/order/", "/api/order/id", "/api/order/user", "/api/order/approve",
                         "/api/order/decline","/api/order/fulfill", "/api/inventory/*", "/api/delivery/*",
                         "/api/truck/*").hasAuthority("WAREHOUSE_MANAGER")
                 .antMatchers("/api/customer/*").hasAuthority("SYSTEM_ADMIN")

@@ -7,6 +7,7 @@ import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.statics.OrderStatus;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Set;
 
 public interface OrderService {
@@ -27,9 +28,11 @@ public interface OrderService {
 
     MessageHandler fulfillOrder(Long orderId);
 
-    Page<OrderDtoIn> getUserOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
+    Page<OrderDtoIn> getOrdersOfLoggedUser(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
 
     Page<OrderDtoOut> getAllOrders(OrderStatus orderStatus, Integer pageNo, Integer pageSize, String sortBy);
+
+    List<OrderDtoOut> getOrdersOfUser(Long userId);
 
     OrderDtoIn getOrderById(Long orderId);
 }
