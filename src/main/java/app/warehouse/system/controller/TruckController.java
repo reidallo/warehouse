@@ -1,14 +1,12 @@
 package app.warehouse.system.controller;
 
 import app.warehouse.system.dto.TruckDto;
+import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.service.TruckService;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/truck")
@@ -28,5 +26,15 @@ public class TruckController {
     @GetMapping(value = "/id")
     public ResponseEntity<TruckDto> getTruckById(@RequestParam(name = "truckId") Long truckId) {
         return ResponseEntity.ok(truckService.getTruckById(truckId));
+    }
+
+    @PostMapping(value = "/")
+    public MessageHandler addNewTruck(@RequestBody TruckDto truckDto) {
+        return truckService.addNewTruck(truckDto);
+    }
+
+    @PutMapping(value = "/id")
+    public MessageHandler disableTruck(@RequestParam(name = "truckId") Long truckId) {
+        return truckService.disableTruck(truckId);
     }
 }
