@@ -16258,3 +16258,107 @@ app.warehouse.system.exception.ExceptionHandler: User not found!
 2022-09-25 21:06:39.019  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
 2022-09-25 21:06:39.022  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
 2022-09-25 21:06:40.371  WARN dallo --- [nio-8080-exec-2] o.a.c.u.SessionIdGeneratorBase           : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [303] milliseconds.
+2022-09-25 21:10:51.183  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-25 21:10:51.190  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-25 21:10:51.214  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-25 22:47:22.324  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 6524 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-25 22:47:22.332  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-25 22:47:23.055  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-25 22:47:23.152  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 8 JPA repository interfaces.
+2022-09-25 22:47:23.655  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-25 22:47:23.672  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-25 22:47:23.672  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-25 22:47:23.673  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-25 22:47:23.829  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-25 22:47:23.829  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1457 ms
+2022-09-25 22:47:24.103  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-25 22:47:24.268  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-25 22:47:24.537  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-25 22:47:24.959  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-25 22:47:25.033  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-25 22:47:25.036  WARN dallo --- [ main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          liquibase/schema/db-schema-change.xml::5::reidallo was: 8:1f5a27a75693855b334f0f9fd96ddc01 but is now: 8:d61acd75405e62e5bd141371fc733b60
+     1 change sets had duplicate identifiers
+          liquibase/schema/db-schema-change.xml::5::reidallo
+
+2022-09-25 22:47:25.037  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-25 22:47:25.048  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-25 22:47:25.050  INFO dallo --- [ main] o.a.c.c.StandardService                  : Stopping service [Tomcat]
+2022-09-25 22:47:25.059  INFO dallo --- [ main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-09-25 22:47:25.077 ERROR dallo --- [ main] o.s.b.SpringApplication                  : Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: Invocation of init method failed; nested exception is liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          liquibase/schema/db-schema-change.xml::5::reidallo was: 8:1f5a27a75693855b334f0f9fd96ddc01 but is now: 8:d61acd75405e62e5bd141371fc733b60
+     1 change sets had duplicate identifiers
+          liquibase/schema/db-schema-change.xml::5::reidallo
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1804)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:620)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:542)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:335)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:333)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:208)
+	at org.springframework.context.support.AbstractApplicationContext.getBean(AbstractApplicationContext.java:1154)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:908)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:583)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:147)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:734)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:308)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1306)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1295)
+	at app.warehouse.system.WarehouseApplication.main(WarehouseApplication.java:10)
+Caused by: liquibase.exception.ValidationFailedException: Validation Failed:
+     1 change sets check sum
+          liquibase/schema/db-schema-change.xml::5::reidallo was: 8:1f5a27a75693855b334f0f9fd96ddc01 but is now: 8:d61acd75405e62e5bd141371fc733b60
+     1 change sets had duplicate identifiers
+          liquibase/schema/db-schema-change.xml::5::reidallo
+
+	at liquibase.changelog.DatabaseChangeLog.validate(DatabaseChangeLog.java:296)
+	at liquibase.Liquibase.lambda$update$1(Liquibase.java:231)
+	at liquibase.Scope.lambda$child$0(Scope.java:180)
+	at liquibase.Scope.child(Scope.java:189)
+	at liquibase.Scope.child(Scope.java:179)
+	at liquibase.Scope.child(Scope.java:158)
+	at liquibase.Liquibase.runInScope(Liquibase.java:2405)
+	at liquibase.Liquibase.update(Liquibase.java:211)
+	at liquibase.Liquibase.update(Liquibase.java:197)
+	at liquibase.integration.spring.SpringLiquibase.performUpdate(SpringLiquibase.java:314)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:269)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1863)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1800)
+	... 18 more
+2022-09-25 22:48:25.620  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 27960 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-25 22:48:25.626  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-25 22:48:26.179  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-25 22:48:26.260  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 76 ms. Found 8 JPA repository interfaces.
+2022-09-25 22:48:26.645  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-25 22:48:26.656  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-25 22:48:26.657  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-25 22:48:26.657  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-25 22:48:26.762  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-25 22:48:26.762  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1111 ms
+2022-09-25 22:48:26.932  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-25 22:48:27.039  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-25 22:48:27.229  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-25 22:48:27.545  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-25 22:48:27.900  INFO dallo --- [ main] l.changelog                              : Table wr_reset_password created
+2022-09-25 22:48:28.102  INFO dallo --- [ main] l.changelog                              : Foreign key constraint added to wr_reset_password (fk_user)
+2022-09-25 22:48:28.104  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-change.xml::6::reidallo ran successfully in 440ms
+2022-09-25 22:48:28.118  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-25 22:48:28.199  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-25 22:48:28.277  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-25 22:48:28.432  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-25 22:48:28.547  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-25 22:48:29.082  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-25 22:48:29.089  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-25 22:48:29.971  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@27f43664, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@234adbe2, org.springframework.security.web.context.SecurityContextPersistenceFilter@fefd4a2, org.springframework.security.web.header.HeaderWriterFilter@568cbf8d, org.springframework.web.filter.CorsFilter@2f154d9b, org.springframework.security.web.authentication.logout.LogoutFilter@6b578779, app.warehouse.system.security.jwt.JwtFilter@415d88de, app.warehouse.system.security.jwt.JwtFilter@415d88de, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@352a8183, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@361d169a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@7d8c264, org.springframework.security.web.session.SessionManagementFilter@13f358f8, org.springframework.security.web.access.ExceptionTranslationFilter@64864875, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@33490054]
+2022-09-25 22:48:30.143  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-25 22:48:30.158  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-25 22:48:30.166  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 4.806 seconds (JVM running for 6.172)

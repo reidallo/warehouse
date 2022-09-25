@@ -61,4 +61,25 @@
         </addColumn>
     </changeSet>
 
+    <changeSet id="6" author="reidallo" context="create wr_reset_password table">
+        <createTable tableName="wr_reset_password">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="token" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiration_date" type="date">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="fk_user" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="wr_reset_password" baseColumnNames="fk_user"
+                                 constraintName="fk_user_token" referencedTableName="wr_user"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
 </databaseChangeLog>
