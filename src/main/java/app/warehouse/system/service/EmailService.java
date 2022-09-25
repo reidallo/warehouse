@@ -7,4 +7,6 @@ public interface EmailService {
 
     void sendEmailUnderDelivery(String firstName, String lastName, String orderNumber, String email, String date,
                                 String subject);
+
+    void sendEmailToResetPassword(String email, String url, String token, String subject);
 }

@@ -42,7 +42,8 @@ public class SecurityConfig {
 
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/user/register", "/api/user/login")
+                .antMatchers("/api/user/register", "/api/user/login", "/api/user/password",
+                        "/api/user/password/reset")
                 .permitAll()
                 .antMatchers("/api/order/add", "/api/order/add/item",
                         "/api/order/remove/item", "/api/order/cancel",

@@ -1,16 +1,24 @@
 package app.warehouse.system.service.implementation;
 
+import app.warehouse.system.dto.PasswordResetDto;
+import app.warehouse.system.exception.ExceptionHandler;
+import app.warehouse.system.exception.MessageHandler;
+import app.warehouse.system.exception.Messages;
 import app.warehouse.system.model.Customer;
+import app.warehouse.system.model.ResetPassword;
 import app.warehouse.system.model.Role;
 import app.warehouse.system.model.User;
 import app.warehouse.system.repository.CustomerRepository;
+import app.warehouse.system.repository.ResetPasswordRepository;
 import app.warehouse.system.repository.RoleRepository;
 import app.warehouse.system.repository.UserRepository;
 import app.warehouse.system.security.jwt.JwtUtils;
 import app.warehouse.system.security.request.LoginRequest;
 import app.warehouse.system.security.request.RegisterRequest;
 import app.warehouse.system.security.response.JwtResponse;
+import app.warehouse.system.service.EmailService;
 import app.warehouse.system.service.UserService;
+import app.warehouse.system.statics.MessageStatus;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,9 +27,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -33,6 +41,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final RoleRepository roleRepository;
     private final CustomerRepository customerRepository;
+    private final EmailService emailService;
+    private final ResetPasswordRepository resetPasswordRepository;
 
     @Override
     public JwtResponse login(LoginRequest request) {
@@ -49,7 +59,6 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public void register(RegisterRequest request) {
 
-        //check if user is already registered
         if (userRepository.findUserByEmail(request.getEmail()).isPresent()) {
             throw new IllegalStateException("User with email: " + request.getEmail() + " already exists!");
         }
@@ -75,5 +84,44 @@ public class UserServiceImpl implements UserService {
         customer.setLastName(request.getLastName());
         customer.setUser(user);
         customerRepository.save(customer);
+    }
+
+    @Override
+    @Transactional
+    public MessageHandler forgotPassword(HttpServletRequest httpRequest, String email) {
+
+        User user = userRepository.findUserByEmail(email).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "User")));
+
+        String subject = "Reset Password";
+        String token = UUID.randomUUID().toString();
+        String url = "http://localhost:8080" + httpRequest.getContextPath() + "/password/reset?token=" + token;
+
+        ResetPassword resetPassword = new ResetPassword(token, user);
+        resetPasswordRepository.save(resetPassword);
+        emailService.sendEmailToResetPassword(email, url, token, subject);
+
+        MessageHandler.message(MessageStatus.SUCCESS, "We have sent a link to your email account!");
+        return new MessageHandler(MessageHandler.hashMap);
+    }
+
+    @Override
+    public MessageHandler changePassword(String token, PasswordResetDto passwordResetDto) {
+
+        ResetPassword resetPassword = resetPasswordRepository.findByToken(token).orElseThrow(() ->
+                new ExceptionHandler("This token is not valid!"));
+        Calendar calendar = Calendar.getInstance();
+        if (resetPassword.getExpirationDate().getTime() - calendar.getTime().getTime()<= 0)
+            throw new ExceptionHandler("This token has expired!");
+        if (!passwordResetDto.getPassword().equals(passwordResetDto.getRePassword()))
+            throw new ExceptionHandler("Passwords do not match!");
+
+        User user = userRepository.findUserByEmail(resetPassword.getUser().getEmail()).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "User")));
+        user.setPassword(passwordEncoder.encode(passwordResetDto.getPassword()));
+        userRepository.save(user);
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Password", "changed"));
+        return new MessageHandler(MessageHandler.hashMap);
     }
 }

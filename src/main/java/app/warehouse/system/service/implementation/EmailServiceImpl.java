@@ -73,4 +73,27 @@ public class EmailServiceImpl implements EmailService {
         }
         mailSender.send(mimeMessage);
     }
+
+    @Override
+    public void sendEmailToResetPassword(String email, String url, String token, String subject) {
+
+        MimeMessage mimeMessage = mailSender.createMimeMessage();
+        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
+
+        Map<String, Object> model = new HashMap<>();
+        model.put("url", url);
+
+        Context context = new Context();
+        context.setVariables(model);
+
+        try {
+            messageHelper.setTo(email);
+            messageHelper.setSubject("Warehouse Team - " + subject);
+            messageHelper.setText(templateEngine.process("template-reset-password", context), true);
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+        mailSender.send(mimeMessage);
+    }
 }
