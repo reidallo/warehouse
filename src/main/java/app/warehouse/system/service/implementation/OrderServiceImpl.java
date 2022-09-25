@@ -11,20 +11,15 @@ import app.warehouse.system.mapper.ItemMapper;
 import app.warehouse.system.mapper.OrderMapper;
 import app.warehouse.system.model.*;
 import app.warehouse.system.repository.*;
+import app.warehouse.system.service.EmailService;
 import app.warehouse.system.service.OrderService;
 import app.warehouse.system.statics.MessageStatus;
 import app.warehouse.system.statics.OrderStatus;
 import liquibase.repackaged.org.apache.commons.lang3.RandomStringUtils;
 import lombok.AllArgsConstructor;
 import org.springframework.data.domain.*;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.context.Context;
-import org.thymeleaf.spring5.SpringTemplateEngine;
 
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,8 +36,7 @@ public class OrderServiceImpl implements OrderService {
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
-    private final JavaMailSender mailSender;
-    private final SpringTemplateEngine templateEngine;
+    private final EmailService emailService;
 
     @Override
     @Transactional
@@ -216,9 +210,11 @@ public class OrderServiceImpl implements OrderService {
 
         if (order.getOrderStatus().equals(OrderStatus.AWAITING_APPROVAL)) {
             order.setOrderStatus(OrderStatus.DECLINED);
-            if (message != null)
-                sendEmailMessage(order.getCustomer().getFirstName(), order.getCustomer().getLastName(),
-                        order.getOrderNumber(), message, userEmail);
+            if (message != null) {
+                String subject = "Declined Order";
+                emailService.sendEmailDeclinedOrder(order.getCustomer().getFirstName(), order.getCustomer().getLastName(),
+                        order.getOrderNumber(), message, userEmail, subject);
+            }
             orderRepository.save(order);
         }
         else {
@@ -288,30 +284,5 @@ public class OrderServiceImpl implements OrderService {
         String loggedUsername = LoggedUser.loggedInUsername();
         if (!loggedUsername.equals(username))
             throw new ExceptionHandler(ExceptionHandler.NO_ACCESS);
-    }
-
-    private void sendEmailMessage(String firstName, String lastName, String orderNumber, String message, String email) {
-
-        MimeMessage mimeMessage = mailSender.createMimeMessage();
-        MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage, "utf-8");
-
-        Map<String, Object> model = new HashMap<>();
-        model.put("firstName", firstName);
-        model.put("lastName", lastName);
-        model.put("orderNumber", orderNumber);
-        model.put("message", message);
-
-        Context context = new Context();
-        context.setVariables(model);
-
-        try {
-            messageHelper.setTo(email);
-            messageHelper.setSubject("Warehouse Team - Declined Order");
-            messageHelper.setText(templateEngine.process("template-declined-order", context), true);
-
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }
-        mailSender.send(mimeMessage);
     }
 }

@@ -8,6 +8,7 @@ import app.warehouse.system.repository.DeliveryRepository;
 import app.warehouse.system.repository.InventoryRepository;
 import app.warehouse.system.repository.OrderRepository;
 import app.warehouse.system.repository.TruckRepository;
+import app.warehouse.system.service.EmailService;
 import app.warehouse.system.service.ScheduleService;
 import app.warehouse.system.statics.MessageStatus;
 import app.warehouse.system.statics.OrderStatus;
@@ -28,6 +29,7 @@ public class ScheduleServiceImpl implements ScheduleService {
     private final TruckRepository truckRepository;
     private final DeliveryRepository deliveryRepository;
     private final InventoryRepository inventoryRepository;
+    private final EmailService emailService;
 
     @Override
     @Transactional
@@ -70,6 +72,9 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
         order.setOrderStatus(OrderStatus.UNDER_DELIVERY);
         updateInventoryQuantity(orderId);
+        String subject = "Under Delivery";
+        emailService.sendEmailUnderDelivery(order.getCustomer().getFirstName(), order.getCustomer().getLastName(),
+                order.getOrderNumber(), order.getCustomer().getUser().getEmail(), date, subject);
 
         MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Delivery", "scheduled"));
         return new MessageHandler(MessageHandler.hashMap);
