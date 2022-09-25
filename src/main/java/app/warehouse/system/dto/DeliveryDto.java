@@ -12,4 +12,5 @@ public class DeliveryDto {
     private String deliveryCode;
     private Long orderId;
     private Long truckId;
+    private boolean status;
 }

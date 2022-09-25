@@ -5,6 +5,7 @@ import app.warehouse.system.dto.OrderDtoOut;
 import app.warehouse.system.mapper.ItemMapper;
 import app.warehouse.system.mapper.OrderMapper;
 import app.warehouse.system.model.Order;
+import app.warehouse.system.statics.OrderStatus;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -85,6 +86,8 @@ public class OrderMapperImpl implements OrderMapper {
         if (entity == null)
             return null;
         OrderDtoOut dto = new OrderDtoOut();
+        if (entity.getOrderId() != null)
+            dto.setOrderId(entity.getOrderId());
         if (entity.getOrderStatus() != null)
             dto.setOrderStatus(entity.getOrderStatus().toString());
         if (entity.getDeadlineDate() != null)
@@ -99,9 +102,47 @@ public class OrderMapperImpl implements OrderMapper {
     }
 
     @Override
+    public Order toEntityFromDtoOut(OrderDtoOut dto) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        if (dto == null)
+            return null;
+        Order entity = new Order();
+        if (dto.getOrderNumber() != null)
+            entity.setOrderNumber(dto.getOrderNumber());
+        if (dto.getOrderPrice() != null)
+            entity.setOrderPrice(dto.getOrderPrice());
+        if (dto.getDeadlineDate() != null) {
+            try {
+                entity.setDeadlineDate(dateFormat.parse(dto.getDeadlineDate()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        if (dto.getSubmitDate() != null) {
+            try {
+                entity.setSubmitDate(dateFormat.parse(dto.getSubmitDate()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        }
+        if (dto.getOrderStatus() != null)
+            entity.setOrderStatus(OrderStatus.valueOf(dto.getOrderStatus()));
+        if (dto.getOrderId() != null)
+            entity.setOrderId(dto.getOrderId());
+        return entity;
+    }
+
+    @Override
     public Set<OrderDtoOut> toDtoOutSet(Set<Order> entitySet) {
         Set<OrderDtoOut> dtoSet = new HashSet<>();
         entitySet.forEach(entity -> dtoSet.add(toDtoOut(entity)));
         return dtoSet;
+    }
+
+    @Override
+    public Set<Order> toEntitySetFromDtoOut(Set<OrderDtoOut> dtoSet) {
+        Set<Order> entitySet = new HashSet<>();
+        dtoSet.forEach(dto -> entitySet.add(toEntityFromDtoOut(dto)));
+        return entitySet;
     }
 }

@@ -47,9 +47,10 @@ public class SecurityConfig {
                 .antMatchers("/api/order/add", "/api/order/add/item",
                         "/api/order/remove/item", "/api/order/cancel",
                         "/api/order/submit", "/api/order/user").hasAuthority("CLIENT")
-                .antMatchers("/api/order/all", "/api/order/id", "/api/order/approve",
-                        "/api/order/decline", "/api/inventory/*", "/api/delivery/*",
+                .antMatchers("/api/order/", "/api/order/id", "/api/order/approve",
+                        "/api/order/decline","/api/order/fulfill", "/api/inventory/*", "/api/delivery/*",
                         "/api/truck/*").hasAuthority("WAREHOUSE_MANAGER")
+                .antMatchers("/api/customer/*").hasAuthority("SYSTEM_ADMIN")
                 .anyRequest().authenticated()
                 .and().logout()
                 .logoutUrl("/logout")

@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class OrderDtoOut {
 
+    private Long orderId;
     private String orderNumber;
     private String submitDate;
     private String deadlineDate;

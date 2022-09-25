@@ -55,4 +55,10 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
+    <changeSet id="5" author="reidallo" context="add column status at wr_delivery">
+        <addColumn tableName="wr_delivery">
+            <column name="delivery_status" type="boolean"/>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

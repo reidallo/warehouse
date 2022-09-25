@@ -37,6 +37,7 @@ public class DeliveryMapperImpl implements DeliveryMapper {
             order.setOrderId(dto.getOrderId());
             entity.setOrder(order);
         }
+        entity.setStatus(dto.isStatus());
         return entity;
     }
 

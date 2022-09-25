@@ -10,5 +10,9 @@ public interface OrderMapper extends IMapper<Order, OrderDtoIn>{
 
     OrderDtoOut toDtoOut(Order entity);
 
+    Order toEntityFromDtoOut(OrderDtoOut dto);
+
     Set<OrderDtoOut> toDtoOutSet(Set<Order> entitySet);
+
+    Set<Order> toEntitySetFromDtoOut(Set<OrderDtoOut> dtoSet);
 }

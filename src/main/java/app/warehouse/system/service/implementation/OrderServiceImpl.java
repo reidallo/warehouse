@@ -37,6 +37,7 @@ public class OrderServiceImpl implements OrderService {
     private final UserRepository userRepository;
     private final ItemRepository itemRepository;
     private final EmailService emailService;
+    private final DeliveryRepository deliveryRepository;
 
     @Override
     @Transactional
@@ -221,6 +222,34 @@ public class OrderServiceImpl implements OrderService {
             MessageHandler.message(MessageStatus.ERROR, "You can not decline this order!");
             return new MessageHandler(MessageHandler.hashMap);
         }
+
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "declined"));
+        return new MessageHandler(MessageHandler.hashMap);
+    }
+
+    @Override
+    public MessageHandler fulfillOrder(Long orderId) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+        List<Delivery> deliveryList = deliveryRepository.findByOrderId(orderId);
+
+        if (!order.getOrderStatus().equals(OrderStatus.UNDER_DELIVERY)) {
+            MessageHandler.message(MessageStatus.ERROR, "This order is not delivered yet!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+
+        if (deliveryList.isEmpty()) {
+            MessageHandler.message(MessageStatus.ERROR, "This order is not delivered yet!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+        deliveryList.forEach(delivery -> {
+            if (!delivery.isStatus())
+                throw new ExceptionHandler("This order is not delivered yet");
+        });
+
+        order.setOrderStatus(OrderStatus.FULFILLED);
+        orderRepository.save(order);
 
         MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "declined"));
         return new MessageHandler(MessageHandler.hashMap);

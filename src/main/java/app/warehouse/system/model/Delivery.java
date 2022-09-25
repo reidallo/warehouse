@@ -26,4 +26,6 @@ public class Delivery {
     @ManyToOne
     @JoinColumn(name = "fk_truck", referencedColumnName = "id")
     private Truck truck;
+    @Column(name = "delivery_status")
+    private boolean status;
 }

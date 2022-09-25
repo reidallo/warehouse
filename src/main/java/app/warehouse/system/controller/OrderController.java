@@ -20,7 +20,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/")
     public ResponseEntity<Page<OrderDtoOut>> getAllOrders(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "5") Integer pageSize,
@@ -82,5 +82,10 @@ public class OrderController {
             @RequestParam(name = "orderId") Long orderId,
             @RequestParam(name = "message", required = false) String message) {
         return orderService.declineOrder(orderId, message);
+    }
+
+    @PutMapping(value = "/fulfill")
+    public MessageHandler fulfillOrder(@RequestParam(name = "orderId") Long orderId) {
+        return orderService.fulfillOrder(orderId);
     }
 }
