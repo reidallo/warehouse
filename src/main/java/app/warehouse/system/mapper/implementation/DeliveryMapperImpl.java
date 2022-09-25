@@ -4,6 +4,7 @@ import app.warehouse.system.dto.DeliveryDto;
 import app.warehouse.system.mapper.DeliveryMapper;
 import app.warehouse.system.model.Delivery;
 import app.warehouse.system.model.Order;
+import org.springframework.stereotype.Component;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,6 +12,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
+@Component
 public class DeliveryMapperImpl implements DeliveryMapper {
 
     @Override
