@@ -17,5 +17,5 @@ public class OrderDtoIn {
     private Double orderPrice;
     private Long customerId;
     private Set<ItemDto> orderItems;
-    private Long orderQuantity;
+    private Integer orderQuantity;
 }

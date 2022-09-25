@@ -51,7 +51,7 @@ public class OrderServiceImpl implements OrderService {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Set<ItemDto> itemsDto = orderDto.getOrderItems();
         Double totalPrice = calculateItemsPrice(itemsDto);
-        Long orderQuantity = calculateItemsQuantity(itemsDto);
+        Integer orderQuantity = calculateItemsQuantity(itemsDto);
 
         Order order = new Order();
         order.setOrderStatus(OrderStatus.CREATED);
@@ -92,7 +92,7 @@ public class OrderServiceImpl implements OrderService {
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
 
             Double orderPrice = calculateItemsPrice(itemDtoSet);
-            Long orderQuantity = calculateItemsQuantity(itemDtoSet);
+            Integer orderQuantity = calculateItemsQuantity(itemDtoSet);
             Set<Item> itemSet = itemMapper.toEntitySet(itemDtoSet);
             itemSet.forEach(item -> item.setOrder(order));
             itemRepository.saveAll(itemSet);
@@ -122,7 +122,7 @@ public class OrderServiceImpl implements OrderService {
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
 
             Double orderPrice = calculateItemsPrice(itemDtoSet);
-            Long orderQuantity = calculateItemsQuantity(itemDtoSet);
+            Integer orderQuantity = calculateItemsQuantity(itemDtoSet);
 
             Set<Item> orderItems = order.getOrderItems();
             Set<Item> itemsToRemove = itemMapper.toEntitySet(itemDtoSet);
@@ -275,9 +275,9 @@ public class OrderServiceImpl implements OrderService {
         return totalPrice;
     }
 
-    private long calculateItemsQuantity(Set<ItemDto> itemDtoList) {
+    private int calculateItemsQuantity(Set<ItemDto> itemDtoList) {
 
-        long orderQuantity = 0;
+        int orderQuantity = 0;
         for (ItemDto itemDto: itemDtoList) {
             orderQuantity += itemDto.getItemQuantity();
         }

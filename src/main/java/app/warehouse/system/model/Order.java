@@ -35,5 +35,5 @@ public class Order {
     @OneToMany(mappedBy = "order")
     private Set<Item> orderItems;
     @Column(name = "order_quantity")
-    private Long orderQuantity;
+    private Integer orderQuantity;
 }

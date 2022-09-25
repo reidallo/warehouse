@@ -18,7 +18,7 @@ public class Inventory {
     @Column(name = "name")
     private String name;
     @Column(name = "quantity")
-    private Long quantity;
+    private Integer quantity;
     @Column(name = "price")
     private Double price;
     @Column(name = "active")

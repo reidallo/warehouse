@@ -3,10 +3,7 @@ package app.warehouse.system.service.implementation;
 import app.warehouse.system.exception.ExceptionHandler;
 import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.exception.Messages;
-import app.warehouse.system.model.Delivery;
-import app.warehouse.system.model.Inventory;
-import app.warehouse.system.model.Order;
-import app.warehouse.system.model.Truck;
+import app.warehouse.system.model.*;
 import app.warehouse.system.repository.DeliveryRepository;
 import app.warehouse.system.repository.InventoryRepository;
 import app.warehouse.system.repository.OrderRepository;
@@ -21,10 +18,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -55,30 +49,18 @@ public class ScheduleServiceImpl implements ScheduleService {
             e.printStackTrace();
         }
 
-        if (deliveryDate != null) {
-            Calendar calendar = Calendar.getInstance();
-            calendar.setTime(deliveryDate);
-            if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY) {
-                MessageHandler.message(MessageStatus.ERROR, "You can not schedule a delivery on Sunday!");
-                return new MessageHandler(MessageHandler.hashMap);
-            }
-        }
-
-        Long itemsNumber = order.getOrderQuantity();
-        int neededTrucks = 0;
-        while (itemsNumber > 0)  {
-            itemsNumber -= 10;
-            neededTrucks++;
-        }
+        checkIfDateIsSunday(deliveryDate);
+        int trucksNumber = neededTrucks(order.getOrderQuantity());
 
         List<Truck> truckList = truckRepository.findAvailableTrucks(deliveryDate);
-        if (neededTrucks > truckList.size()) {
+        if (trucksNumber > truckList.size()) {
             MessageHandler.message(MessageStatus.ERROR, "There are only " + truckList.size() +
                     " available on " + date);
             return new MessageHandler(MessageHandler.hashMap);
         }
 
-        for (int i = 0; i < neededTrucks; i++) {
+        for (int i = 0; i < trucksNumber; i++) {
+
             Delivery delivery = new Delivery();
             delivery.setDeliveryDate(deliveryDate);
             delivery.setDeliveryCode(RandomStringUtils.random(15, true, true));
@@ -87,9 +69,45 @@ public class ScheduleServiceImpl implements ScheduleService {
             deliveryRepository.save(delivery);
         }
         order.setOrderStatus(OrderStatus.UNDER_DELIVERY);
+        updateInventoryQuantity(orderId);
 
         MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Delivery", "scheduled"));
         return new MessageHandler(MessageHandler.hashMap);
     }
 
+    private void checkIfDateIsSunday(Date deliveryDate) {
+        if (deliveryDate != null) {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(deliveryDate);
+            if (calendar.get(Calendar.DAY_OF_WEEK) == Calendar.SUNDAY)
+                throw new ExceptionHandler("You can not schedule an order on Sunday!");
+        }
+    }
+
+    private int neededTrucks(Integer itemsNumber) {
+        int trucksNumber = 0;
+        while (itemsNumber > 0)  {
+            itemsNumber -= 10;
+            trucksNumber++;
+        }
+        return trucksNumber;
+    }
+
+    private void updateInventoryQuantity(Long orderId) {
+
+        Order order = orderRepository.findById(orderId).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
+        Set<Item> itemSet = order.getOrderItems();
+
+        itemSet.forEach(item -> {
+            Inventory inventory = inventoryRepository.findById(item.getInventory().getInventoryId()).orElseThrow(() ->
+                    new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Item")));
+            if (item.getItemQuantity() > inventory.getQuantity())
+                throw new ExceptionHandler(String.format(ExceptionHandler.NOT_ENOUGH, inventory.getName()));
+            Integer updatedInventoryQuantity = inventory.getQuantity() - item.getItemQuantity();
+            inventory.setQuantity(updatedInventoryQuantity);
+
+            inventoryRepository.save(inventory);
+        });
+    }
 }
