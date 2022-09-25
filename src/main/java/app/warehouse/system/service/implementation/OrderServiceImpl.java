@@ -48,7 +48,7 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     public MessageHandler addNewOrder(OrderDtoIn orderDto){
 
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         Set<ItemDto> itemsDto = orderDto.getOrderItems();
         Double totalPrice = calculateItemsPrice(itemsDto);
         Long orderQuantity = calculateItemsQuantity(itemsDto);

@@ -22,7 +22,7 @@ public class OrderMapperImpl implements OrderMapper {
 
     @Override
     public Order toEntity(OrderDtoIn dto) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         if (dto == null)
             return null;
         Order entity = new Order();
@@ -40,7 +40,7 @@ public class OrderMapperImpl implements OrderMapper {
 
     @Override
     public OrderDtoIn toDto(Order entity) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
         if (entity == null)
              return null;
         OrderDtoIn dto = new OrderDtoIn();
