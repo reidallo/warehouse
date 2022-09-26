@@ -42,6 +42,9 @@ public class SecurityConfig {
 
         http.cors().and().csrf().disable()
                 .authorizeRequests()
+                .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/swagger-ui.html",
+                        "/authenticate", "/webjars/**", "/configuration/security")
+                .permitAll()
                 .antMatchers("/api/user/register", "/api/user/login", "/api/user/password",
                         "/api/user/password/reset")
                 .permitAll()
@@ -63,5 +66,4 @@ public class SecurityConfig {
 
         return http.build();
     }
-
 }
