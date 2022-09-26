@@ -86,4 +86,24 @@
         <addNotNullConstraint tableName="wr_user" columnName="password" columnDataType="varchar(100)"/>
     </changeSet>
 
+    <changeSet id="8" author="reidallo" context="add not null constraint to status column">
+        <addNotNullConstraint tableName="wr_order" columnName="status" columnDataType="varchar(25)"/>
+    </changeSet>
+
+    <changeSet id="9" author="reidallo" context="add not null constraint to price column">
+        <addNotNullConstraint tableName="wr_order" columnName="order_price" columnDataType="decimal(9,2)"/>
+    </changeSet>
+
+    <changeSet id="10" author="reidallo" context="add not null constraint to quantity column">
+        <addNotNullConstraint tableName="wr_order" columnName="order_quantity" columnDataType="int"/>
+    </changeSet>
+
+    <changeSet id="11" author="reidallo" context="change order_number column type">
+        <addNotNullConstraint tableName="wr_order" columnName="order_number" columnDataType="varchar(25)"/>
+    </changeSet>
+
+    <changeSet id="12" author="reidallo" context="change item_quantity column type">
+        <addNotNullConstraint tableName="wr_item" columnName="item_quantity" columnDataType="int"/>
+    </changeSet>
+
 </databaseChangeLog>
