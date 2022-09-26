@@ -21,5 +21,14 @@ public class RegisterRequest {
     private String password;
     @NotNull
     private String accountType;
-
+    @NotNull
+    private String address;
+    @NotNull
+    private Integer postalCode;
+    @NotNull
+    private String city;
+    @NotNull
+    private String state;
+    @NotNull
+    private String phone;
 }

@@ -49,31 +49,31 @@ public class OrderController {
         return ResponseEntity.ok(orderService.getOrdersOfLoggedUser(orderStatus, pageNo, pageSize, sortBy));
     }
 
-    @PostMapping(value = "/add")
+    @PostMapping(value = "/user/add")
     public MessageHandler addNewOrder(@RequestBody OrderDtoIn orderDto) {
         return orderService.addNewOrder(orderDto);
     }
 
-    @PostMapping(value = "/add/item")
+    @PostMapping(value = "/user/add/item")
     public MessageHandler addItemToOrder(
             @RequestParam(name = "orderId") Long orderId,
             @RequestBody Set<ItemDto> itemDtoSet) {
         return orderService.addItemToOrder(orderId, itemDtoSet);
     }
 
-    @PutMapping(value = "/remove/item")
+    @PutMapping(value = "/user/remove/item")
     public MessageHandler removeItemFromOrder(
             @RequestParam(name = "orderId") Long orderId,
             @RequestBody Set<ItemDto> itemDtoSet) {
         return orderService.removeItemFromOrder(orderId, itemDtoSet);
     }
 
-    @PutMapping(value = "/cancel")
+    @PutMapping(value = "/user/cancel")
     public MessageHandler cancelOrder(@RequestParam(name = "orderId") Long orderId) {
         return orderService.cancelOrder(orderId);
     }
 
-    @PutMapping(value = "/submit")
+    @PutMapping(value = "/user/submit")
     public MessageHandler submitOrder(@RequestParam(name = "orderId") Long orderId) {
         return orderService.submitOrder(orderId);
     }

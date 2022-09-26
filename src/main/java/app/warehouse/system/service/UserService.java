@@ -12,7 +12,7 @@ public interface UserService {
 
     JwtResponse login(LoginRequest request);
 
-    void register(RegisterRequest request);
+    MessageHandler register(RegisterRequest request);
 
     MessageHandler forgotPassword(HttpServletRequest httpRequest, String email);
 

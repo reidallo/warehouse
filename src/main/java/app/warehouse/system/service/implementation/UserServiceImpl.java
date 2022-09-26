@@ -58,13 +58,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public void register(RegisterRequest request) {
+    public MessageHandler register(RegisterRequest request) {
 
         if (userRepository.findUserByEmail(request.getEmail()).isPresent()) {
-            throw new IllegalStateException("User with email: " + request.getEmail() + " already exists!");
+            throw new ExceptionHandler("User with email: " + request.getEmail() + " already exists!");
         }
         if (userRepository.findUserByUsername(request.getUsername()).isPresent()) {
-            throw new IllegalStateException("User with username: " + request.getUsername() + " already exists!");
+            throw new ExceptionHandler("User with username: " + request.getUsername() + " already exists!");
         }
 
         User user = new User();
@@ -74,17 +74,19 @@ public class UserServiceImpl implements UserService {
         user.setActive(true);
 
         Role role = roleRepository.findRoleByRoleName(request.getAccountType()).orElseThrow(() ->
-                new IllegalStateException("Account type " + request.getAccountType() + " does not exists!"));
+                new ExceptionHandler("Account type " + request.getAccountType() + " does not exists!"));
         Set<Role> roleSet= new HashSet<>();
         roleSet.add(role);
         user.setRoles(roleSet);
         userRepository.save(user);
 
-        Customer customer = new Customer();
-        customer.setFirstName(request.getFirstName());
-        customer.setLastName(request.getLastName());
-        customer.setUser(user);
+        Customer customer = Customer.builder().firstName(request.getFirstName()).lastName(request.getLastName())
+                .user(user).address(request.getAddress()).postalCode(request.getPostalCode()).city(request.getCity())
+                .state(request.getState()).phone(request.getPhone()).build();
         customerRepository.save(customer);
+
+        MessageHandler.message(MessageStatus.SUCCESS, (Messages.CREATED));
+        return new MessageHandler(MessageHandler.hashMap);
     }
 
     @Override

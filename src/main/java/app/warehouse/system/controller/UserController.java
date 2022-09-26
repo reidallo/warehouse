@@ -25,8 +25,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
-    public void register(@Valid @RequestBody RegisterRequest request) {
-        userService.register(request);
+    public MessageHandler register(@Valid @RequestBody RegisterRequest request) {
+        return userService.register(request);
     }
 
     @PostMapping(value = "/password")

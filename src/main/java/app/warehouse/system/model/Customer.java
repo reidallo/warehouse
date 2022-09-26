@@ -1,8 +1,7 @@
 package app.warehouse.system.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -11,6 +10,9 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "wr_customer")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Customer {
 
     @Id
