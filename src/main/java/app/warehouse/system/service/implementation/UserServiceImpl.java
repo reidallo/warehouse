@@ -29,6 +29,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.transaction.Transactional;
+import java.time.Instant;
 import java.util.*;
 
 @Service
@@ -110,8 +111,7 @@ public class UserServiceImpl implements UserService {
 
         ResetPassword resetPassword = resetPasswordRepository.findByToken(token).orElseThrow(() ->
                 new ExceptionHandler("This token is not valid!"));
-        Calendar calendar = Calendar.getInstance();
-        if (resetPassword.getExpirationDate().getTime() - calendar.getTime().getTime()<= 0)
+        if (Instant.now().isAfter(resetPassword.getExpirationDate()))
             throw new ExceptionHandler("This token has expired!");
         if (!passwordResetDto.getPassword().equals(passwordResetDto.getRePassword()))
             throw new ExceptionHandler("Passwords do not match!");
