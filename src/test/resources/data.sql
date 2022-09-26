@@ -23,3 +23,8 @@ INSERT INTO wr_order (id, order_number, submitted_date, deadline_date, status, o
 (2, 'Test', null, null, null, 9.0, 1, 34),
 (3, 'Test', null, null, null, 9.0, 1, 34);
 
+INSERT INTO wr_inventory (id, name, quantity, price, active) VALUES
+(1, 'Test', 100, 100.0, '1'),
+(2, 'Test', 100, 100.0, '1'),
+(3, 'Test', 100, 100.0, '1'),
+(4, 'Test', 100, 100.0, '1');

@@ -1,6 +1,6 @@
 package app.warehouse.system;
 
-import app.warehouse.system.dto.CustomerDto;
+import app.warehouse.system.dto.InventoryDto;
 import com.google.gson.Gson;
 import org.junit.After;
 import org.junit.Before;
@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @Transactional
-public class CustomerTest {
+public class InventoryTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -49,50 +49,48 @@ public class CustomerTest {
     }
 
     @Test
-    @Tag("01_Get_All_Customers")
-    public void test_01_01() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer/")
-                        .param("pageNo", "1")
+    @Tag("01_Get_All_Inventory")
+    public void test_02_01() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/inventory/all")
+                        .param("pageNo", "0")
                         .param("pageSize", "5")
-                        .param("sortBy", "firstName")
+                        .param("sortBy", "name")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200));
     }
 
     @Test
-    @Tag("02_Get_Customer_By_Id")
-    public void test_01_02() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/customer/id")
-                        .param("customerId", "1")
+    @Tag("02_Get_Inventory_By_Id")
+    public void test_02_02() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/inventory/id")
+                        .param("inventoryId", "1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200));
     }
 
     @Test
-    @Tag("03_Update_Customer")
-    public void test_01_03() throws Exception {
-        CustomerDto dto = new CustomerDto();
-        dto.setCustomerId(1L);
-        dto.setUserId(1L);
-        dto.setFirstName("Test");
-        dto.setLastName("Test");
-        dto.setState("Test");
-        dto.setPhone("Test");
-        dto.setCity("Test");
+    @Tag("03_Update_Inventory")
+    public void test_02_03() throws Exception {
+        InventoryDto dto = new InventoryDto();
+        dto.setInventoryId(1L);
+        dto.setPrice(10.0);
+        dto.setName("Test");
+        dto.setQuantity(1);
+        dto.setActive(true);
 
         Gson gson = new Gson();
         String json = gson.toJson(dto);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/customer/")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/inventory/update")
                 .contentType(MediaType.APPLICATION_JSON).content(json)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is(200));
     }
 
     @Test
-    @Tag("04_Disable_Customer")
-    public void test_01_04() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/customer/disable")
-                        .param("customerId", "1")
+    @Tag("04_Disable_Inventory")
+    public void test_02_04() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/inventory/disable")
+                        .param("inventoryId", "1")
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().is(200));
     }
