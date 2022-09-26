@@ -9,7 +9,11 @@ INSERT INTO wr_user (id, username, email, password, active) VALUES
 (5, 'test', 'test@gmail.com', 'test', '1');
 
 INSERT INTO wr_user_role (fk_user, fk_role) VALUES
-(1,1), (2,2), (3,3), (4,1), (5,2);
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 1),
+(5, 2);
 
 INSERT INTO wr_customer (id, first_name, last_name, address, postal_code, city, state, phone, fk_user) VALUES
 (1, 'Test', 'Test', 'Test', 0000, 'Test', 'Test', 'Test', 1),
@@ -28,3 +32,16 @@ INSERT INTO wr_inventory (id, name, quantity, price, active) VALUES
 (2, 'Test', 100, 100.0, '1'),
 (3, 'Test', 100, 100.0, '1'),
 (4, 'Test', 100, 100.0, '1');
+
+INSERT INTO wr_item (id, item_quantity, fk_inventory_item, fk_order) VALUES
+(1, 1, 1, 1),
+(2, 2, 2, 2),
+(3, 3, 3, 3),
+(4, 4, 4, 3);
+
+INSERT INTO wr_truck (id, chassis_number, license_plate, active) VALUES
+(1, 'Test', 'Test', '1'),
+(2, 'Test', 'Test', '1'),
+(3, 'Test', 'Test', '1'),
+(4, 'Test', 'Test', '1'),
+(5, 'Test', 'Test', '1');
