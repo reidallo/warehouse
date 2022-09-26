@@ -82,4 +82,8 @@
                                  referencedColumnNames="id"/>
     </changeSet>
 
+    <changeSet id="7" author="reidallo" context="add not null constraint to password column">
+        <addNotNullConstraint tableName="wr_user" columnName="password" columnDataType="varchar(100)"/>
+    </changeSet>
+
 </databaseChangeLog>
