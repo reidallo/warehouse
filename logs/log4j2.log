@@ -7214,3 +7214,99 @@ app.warehouse.system.exception.ExceptionHandler: This order is not delivered yet
 	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
 	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
 	at java.base/java.lang.Thread.run(Thread.java:834)
+2022-09-27 10:44:35.708  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:44:35.711  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-27 10:44:35.719  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-27 10:44:43.602  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 8092 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-27 10:44:43.608  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-27 10:44:44.469  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-27 10:44:44.560  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 9 JPA repository interfaces.
+2022-09-27 10:44:45.092  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-27 10:44:45.106  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-27 10:44:45.106  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-27 10:44:45.107  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-27 10:44:45.325  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-27 10:44:45.325  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1691 ms
+2022-09-27 10:44:45.502  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-27 10:44:45.669  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-27 10:44:46.010  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-27 10:44:46.451  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-27 10:44:46.767  INFO dallo --- [ main] l.changelog                              : NOT NULL constraint has been added to wr_customer.address
+2022-09-27 10:44:46.768  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-change.xml::15::reidallo ran successfully in 215ms
+2022-09-27 10:44:46.886  INFO dallo --- [ main] l.changelog                              : Columns address(varchar(100)) added to wr_order
+2022-09-27 10:44:46.888  INFO dallo --- [ main] l.changelog                              : ChangeSet liquibase/schema/db-schema-change.xml::16::reidallo ran successfully in 103ms
+2022-09-27 10:44:46.912  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-27 10:44:47.015  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-27 10:44:47.095  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-27 10:44:47.306  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-27 10:44:47.433  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-27 10:44:48.046  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-27 10:44:48.057  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:44:49.194  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5f84e764, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5eaab295, org.springframework.security.web.context.SecurityContextPersistenceFilter@3503e68e, org.springframework.security.web.header.HeaderWriterFilter@1d2b49b2, org.springframework.web.filter.CorsFilter@1e95fc31, org.springframework.security.web.authentication.logout.LogoutFilter@7d2ccd7f, app.warehouse.system.security.jwt.JwtFilter@4e4f4092, app.warehouse.system.security.jwt.JwtFilter@4e4f4092, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@310db5c4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7280785f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@395ac2e5, org.springframework.security.web.session.SessionManagementFilter@6bc45472, org.springframework.security.web.access.ExceptionTranslationFilter@2a12048d, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2d9cc10]
+2022-09-27 10:44:49.590  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-27 10:44:49.609  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-27 10:44:49.974  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 6.856 seconds (JVM running for 8.207)
+2022-09-27 10:51:22.825  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:51:22.827  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-27 10:51:22.836  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-27 10:51:28.534  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 10292 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-27 10:51:28.540  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-27 10:51:29.254  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-27 10:51:29.350  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 9 JPA repository interfaces.
+2022-09-27 10:51:29.773  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-27 10:51:29.778  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-27 10:51:29.779  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-27 10:51:29.779  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-27 10:51:29.989  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-27 10:51:29.989  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1418 ms
+2022-09-27 10:51:30.133  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-27 10:51:30.279  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-27 10:51:30.522  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-27 10:51:30.860  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-27 10:51:30.950  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-27 10:51:31.007  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-27 10:51:31.041  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-27 10:51:31.136  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-27 10:51:31.206  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-27 10:51:31.641  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-27 10:51:31.647  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:51:32.526  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@38769b6c, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1220969, org.springframework.security.web.context.SecurityContextPersistenceFilter@7c27ed2f, org.springframework.security.web.header.HeaderWriterFilter@27a717a7, org.springframework.web.filter.CorsFilter@4d57fc11, org.springframework.security.web.authentication.logout.LogoutFilter@3470c771, app.warehouse.system.security.jwt.JwtFilter@781c2497, app.warehouse.system.security.jwt.JwtFilter@781c2497, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7c2d4398, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@310db5c4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@37b04a2a, org.springframework.security.web.session.SessionManagementFilter@512319dc, org.springframework.security.web.access.ExceptionTranslationFilter@452e0a94, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@30dbcffd]
+2022-09-27 10:51:32.792  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-27 10:51:32.808  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-27 10:51:33.102  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 4.853 seconds (JVM running for 5.89)
+2022-09-27 10:52:17.350  INFO dallo --- [nio-8080-exec-1] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-27 10:52:17.351  INFO dallo --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-27 10:52:17.354  INFO dallo --- [nio-8080-exec-1] o.s.w.s.DispatcherServlet                : Completed initialization in 3 ms
+2022-09-27 10:52:18.502  WARN dallo --- [nio-8080-exec-1] o.a.c.u.SessionIdGeneratorBase           : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [243] milliseconds.
+2022-09-27 10:54:08.604  INFO dallo --- [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:54:08.606  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown initiated...
+2022-09-27 10:54:08.615  INFO dallo --- [ionShutdownHook] c.z.h.HikariDataSource                   : HikariPool-1 - Shutdown completed.
+2022-09-27 10:54:13.817  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Starting WarehouseApplication using Java 11.0.13 on dallo with PID 2276 (C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse\target\classes started by rei in C:\Users\rei\Documents\Projects\WAREHOUSE\warehouse)
+2022-09-27 10:54:13.824  INFO dallo --- [ main] a.w.s.WarehouseApplication               : No active profile set, falling back to 1 default profile: "default"
+2022-09-27 10:54:14.555  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-09-27 10:54:14.650  INFO dallo --- [ main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 90 ms. Found 9 JPA repository interfaces.
+2022-09-27 10:54:15.099  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat initialized with port(s): 8080 (http)
+2022-09-27 10:54:15.104  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Initializing ProtocolHandler ["http-nio-8080"]
+2022-09-27 10:54:15.105  INFO dallo --- [ main] o.a.c.c.StandardService                  : Starting service [Tomcat]
+2022-09-27 10:54:15.106  INFO dallo --- [ main] o.a.c.c.StandardEngine                   : Starting Servlet engine: [Apache Tomcat/9.0.65]
+2022-09-27 10:54:15.222  INFO dallo --- [ main] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring embedded WebApplicationContext
+2022-09-27 10:54:15.222  INFO dallo --- [ main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1367 ms
+2022-09-27 10:54:15.362  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Starting...
+2022-09-27 10:54:15.537  INFO dallo --- [ main] c.z.h.HikariDataSource                   : HikariPool-1 - Start completed.
+2022-09-27 10:54:15.745  INFO dallo --- [ main] l.lockservice                            : Successfully acquired change log lock
+2022-09-27 10:54:16.094  INFO dallo --- [ main] l.changelog                              : Reading from warehouse.DATABASECHANGELOG
+2022-09-27 10:54:16.198  INFO dallo --- [ main] l.lockservice                            : Successfully released change log lock
+2022-09-27 10:54:16.286  INFO dallo --- [ main] o.h.j.i.u.LogHelper                      : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-09-27 10:54:16.336  INFO dallo --- [ main] o.h.Version                              : HHH000412: Hibernate ORM core version 5.6.11.Final
+2022-09-27 10:54:16.427  INFO dallo --- [ main] o.h.a.c.Version                          : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-09-27 10:54:16.494  INFO dallo --- [ main] o.h.d.Dialect                            : HHH000400: Using dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+2022-09-27 10:54:16.918  INFO dallo --- [ main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-09-27 10:54:16.924  INFO dallo --- [ main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-09-27 10:54:17.800  INFO dallo --- [ main] o.s.s.w.DefaultSecurityFilterChain       : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@4bd29a01, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5a4a8a33, org.springframework.security.web.context.SecurityContextPersistenceFilter@452e0a94, org.springframework.security.web.header.HeaderWriterFilter@5f9cb96f, org.springframework.web.filter.CorsFilter@4a3363c9, org.springframework.security.web.authentication.logout.LogoutFilter@5ccc07ae, app.warehouse.system.security.jwt.JwtFilter@7c2b6acb, app.warehouse.system.security.jwt.JwtFilter@7c2b6acb, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@77c66ac2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@12e8c5c4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@63cf6497, org.springframework.security.web.session.SessionManagementFilter@fbc1de9, org.springframework.security.web.access.ExceptionTranslationFilter@75c8855e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6230a15a]
+2022-09-27 10:54:18.055  INFO dallo --- [ main] o.a.c.h.Http11NioProtocol                : Starting ProtocolHandler ["http-nio-8080"]
+2022-09-27 10:54:18.069  INFO dallo --- [ main] o.s.b.w.e.t.TomcatWebServer              : Tomcat started on port(s): 8080 (http) with context path '/app/warehouse'
+2022-09-27 10:54:18.335  INFO dallo --- [ main] a.w.s.WarehouseApplication               : Started WarehouseApplication in 4.791 seconds (JVM running for 5.856)
+2022-09-27 10:54:38.312  INFO dallo --- [nio-8080-exec-2] o.a.c.c.C.[.[.[/app/warehouse]           : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-09-27 10:54:38.313  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Initializing Servlet 'dispatcherServlet'
+2022-09-27 10:54:38.316  INFO dallo --- [nio-8080-exec-2] o.s.w.s.DispatcherServlet                : Completed initialization in 2 ms
+2022-09-27 10:54:39.350  WARN dallo --- [nio-8080-exec-2] o.a.c.u.SessionIdGeneratorBase           : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [262] milliseconds.

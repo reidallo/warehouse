@@ -5,8 +5,10 @@ import app.warehouse.system.exception.ExceptionHandler;
 import app.warehouse.system.exception.MessageHandler;
 import app.warehouse.system.exception.Messages;
 import app.warehouse.system.mapper.ItemMapper;
+import app.warehouse.system.model.Inventory;
 import app.warehouse.system.model.Item;
 import app.warehouse.system.model.Order;
+import app.warehouse.system.repository.InventoryRepository;
 import app.warehouse.system.repository.ItemRepository;
 import app.warehouse.system.repository.OrderRepository;
 import app.warehouse.system.service.ItemService;
@@ -24,6 +26,7 @@ public class ItemServiceImpl implements ItemService {
     private final ItemMapper itemMapper;
     private final OrderRepository orderRepository;
     private final ItemRepository itemRepository;
+    private final InventoryRepository inventoryRepository;
 
     @Override
     @Transactional
@@ -33,6 +36,13 @@ public class ItemServiceImpl implements ItemService {
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
         Item oldItem = itemRepository.findById(itemDto.getItemId()).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Item")));
+        Inventory inventory = inventoryRepository.findById(itemDto.getInventoryId()).orElseThrow(() ->
+                new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Inventory item")));
+        if (itemDto.getItemQuantity() > inventory.getQuantity()) {
+            MessageHandler.message(MessageStatus.ERROR, "There are not enough " + inventory.getName() +
+                    " on the warehouse!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
 
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
 

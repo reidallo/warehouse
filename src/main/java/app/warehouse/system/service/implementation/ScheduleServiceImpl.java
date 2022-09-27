@@ -62,7 +62,6 @@ public class ScheduleServiceImpl implements ScheduleService {
         }
 
         for (int i = 0; i < trucksNumber; i++) {
-
             Delivery delivery = new Delivery();
             delivery.setDeliveryDate(deliveryDate);
             delivery.setDeliveryCode(RandomStringUtils.random(15, true, true));

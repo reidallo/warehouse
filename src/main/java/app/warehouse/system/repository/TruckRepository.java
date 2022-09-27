@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface TruckRepository extends JpaRepository<Truck, Long> {
 
     @Query(value = "SELECT tr.* FROM warehouse.wr_truck tr WHERE tr.active = TRUE AND tr.id NOT IN \n" +
-            "(SELECT de.fk_truck FROM warehouse.wr_delivery de WHERE de.delivery_date = '2022-10-10')", nativeQuery = true)
+            "(SELECT de.fk_truck FROM warehouse.wr_delivery de WHERE de.delivery_date = ?1)", nativeQuery = true)
     List<Truck> findAvailableTrucks(Date date);
 
     @Query("SELECT t FROM Truck t WHERE t.active = true ")

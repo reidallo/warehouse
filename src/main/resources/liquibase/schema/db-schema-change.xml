@@ -114,4 +114,16 @@
         <addUniqueConstraint tableName="wr_reset_password" columnNames="token"/>
     </changeSet>
 
+    <changeSet id="15" author="reidallo" context="add not null constraint to address column">
+        <addNotNullConstraint tableName="wr_customer" columnName="address" columnDataType="varchar(100)"/>
+    </changeSet>
+
+    <changeSet id="16" author="reidallo" context="add address column to wr_order table">
+        <addColumn tableName="wr_order">
+            <column name="address" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
 </databaseChangeLog>

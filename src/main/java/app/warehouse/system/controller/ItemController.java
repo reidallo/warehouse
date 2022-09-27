@@ -16,7 +16,7 @@ public class ItemController {
 
     private final ItemService itemService;
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/")
     public MessageHandler updateOrderItem(@RequestBody ItemDto itemDto) {
         return itemService.updateOrderItem(itemDto);
     }

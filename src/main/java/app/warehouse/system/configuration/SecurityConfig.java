@@ -46,7 +46,7 @@ public class SecurityConfig {
                 .permitAll()
                 .antMatchers("/api/user/**")
                 .permitAll()
-                .antMatchers("/api/order/user/***")
+                .antMatchers("/api/order/user/***", "/api/item/*")
                 .hasAuthority("CLIENT")
                 .antMatchers("/api/order/*", "/api/inventory/*", "/api/delivery/*", "/api/truck/*")
                 .hasAuthority("WAREHOUSE_MANAGER")
