@@ -23,7 +23,7 @@ public class Delivery {
     @ManyToOne
     @JoinColumn(name = "fk_order", referencedColumnName = "id")
     private Order order;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "fk_truck", referencedColumnName = "id")
     private Truck truck;
     @Column(name = "delivery_status")

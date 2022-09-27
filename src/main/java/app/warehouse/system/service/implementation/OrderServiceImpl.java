@@ -253,7 +253,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderStatus(OrderStatus.FULFILLED);
         orderRepository.save(order);
 
-        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "declined"));
+        MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "fulfilled"));
         return new MessageHandler(MessageHandler.hashMap);
     }
 
