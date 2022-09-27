@@ -51,7 +51,7 @@ public class InventoryTest {
     @Test
     @Tag("01_Get_All_Inventory")
     public void test_02_01() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/inventory/all")
+        mockMvc.perform(MockMvcRequestBuilders.get("/api/inventory/")
                         .param("pageNo", "0")
                         .param("pageSize", "5")
                         .param("sortBy", "name")
@@ -81,7 +81,7 @@ public class InventoryTest {
         Gson gson = new Gson();
         String json = gson.toJson(dto);
 
-        mockMvc.perform(MockMvcRequestBuilders.put("/api/inventory/update")
+        mockMvc.perform(MockMvcRequestBuilders.put("/api/inventory/")
                 .contentType(MediaType.APPLICATION_JSON).content(json)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().is(200));
     }

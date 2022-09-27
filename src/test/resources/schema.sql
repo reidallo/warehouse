@@ -54,6 +54,7 @@ CREATE TABLE `wr_order`
     `order_price`    decimal(9, 2) DEFAULT NULL,
     `fk_customer`    int NOT NULL,
     `order_quantity` int           DEFAULT NULL,
+    `address`        varchar(100) NOT NULL,
     PRIMARY KEY (`id`),
     CONSTRAINT `fk_customer` FOREIGN KEY (`fk_customer`) REFERENCES `wr_customer` (`id`)
 );

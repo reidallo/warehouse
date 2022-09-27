@@ -63,6 +63,8 @@ public class OrderMapperImpl implements OrderMapper {
             dto.setOrderItems(itemMapper.toDtoSet(entity.getOrderItems()));
         if (entity.getCustomer() != null)
             dto.setCustomerId(entity.getCustomer().getCustomerId());
+        if (entity.getAddress() != null)
+            dto.setAddress(entity.getAddress());
         return dto;
     }
 

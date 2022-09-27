@@ -45,11 +45,15 @@ public class CustomerServiceImpl implements CustomerService {
 
         Customer customer = customerMapper.toEntity(customerDto);
         if (customer.getFirstName() == null) {
-            MessageHandler.message(MessageStatus.ERROR, "Firstname can not be null!");
+            MessageHandler.message(MessageStatus.ERROR, "First name can not be null!");
             return new MessageHandler(MessageHandler.hashMap);
         }
         if (customer.getLastName() == null) {
-            MessageHandler.message(MessageStatus.ERROR, "Lastname can not be null!");
+            MessageHandler.message(MessageStatus.ERROR, "Last name can not be null!");
+            return new MessageHandler(MessageHandler.hashMap);
+        }
+        if (customer.getAddress() == null) {
+            MessageHandler.message(MessageStatus.ERROR, "Address can not be null!");
             return new MessageHandler(MessageHandler.hashMap);
         }
         customerRepository.save(customer);

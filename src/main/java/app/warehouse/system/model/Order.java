@@ -36,4 +36,6 @@ public class Order {
     private Set<Item> orderItems;
     @Column(name = "order_quantity")
     private Integer orderQuantity;
+    @Column(name = "address")
+    private String address;
 }

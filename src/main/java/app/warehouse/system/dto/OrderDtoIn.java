@@ -18,4 +18,5 @@ public class OrderDtoIn {
     private Long customerId;
     private Set<ItemDto> orderItems;
     private Integer orderQuantity;
+    private String address;
 }

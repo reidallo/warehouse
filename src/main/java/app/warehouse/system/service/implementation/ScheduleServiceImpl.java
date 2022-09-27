@@ -98,7 +98,6 @@ public class ScheduleServiceImpl implements ScheduleService {
     }
 
     private void updateInventoryQuantity(Long orderId) {
-
         Order order = orderRepository.findById(orderId).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
         Set<Item> itemSet = order.getOrderItems();
@@ -110,7 +109,6 @@ public class ScheduleServiceImpl implements ScheduleService {
                 throw new ExceptionHandler(String.format(ExceptionHandler.NOT_ENOUGH, inventory.getName()));
             Integer updatedInventoryQuantity = inventory.getQuantity() - item.getItemQuantity();
             inventory.setQuantity(updatedInventoryQuantity);
-
             inventoryRepository.save(inventory);
         });
     }

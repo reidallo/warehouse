@@ -15,7 +15,7 @@ public class InventoryController {
 
     private final InventoryService inventoryService;
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = "/")
     public ResponseEntity<Page<InventoryDto>> getInventory(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "5") Integer pageSize,
@@ -28,7 +28,7 @@ public class InventoryController {
         return ResponseEntity.ok(inventoryService.getInventoryById(inventoryId));
     }
 
-    @PutMapping(value = "/update")
+    @PutMapping(value = "/")
     public MessageHandler updateInventory(@RequestBody InventoryDto inventoryDto) {
         return inventoryService.updateInventory(inventoryDto);
     }
