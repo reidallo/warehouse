@@ -44,7 +44,7 @@ public class OrderController {
     public ResponseEntity<Page<OrderDtoIn>> getUserOrders(
             @RequestParam(defaultValue = "0") Integer pageNo,
             @RequestParam(defaultValue = "5") Integer pageSize,
-            @RequestParam(defaultValue = "orderStatus") String sortBy,
+            @RequestParam(defaultValue = "deadlineDate") String sortBy,
             @RequestParam(required = false, name = "orderStatus") OrderStatus orderStatus) {
         return ResponseEntity.ok(orderService.getOrdersOfLoggedUser(orderStatus, pageNo, pageSize, sortBy));
     }

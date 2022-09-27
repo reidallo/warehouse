@@ -66,10 +66,10 @@ public class OrderServiceImpl implements OrderService {
         order.setCustomer(customer);
         orderRepository.save(order);
 
-        Set<Item> itemList = itemMapper.toEntitySet(itemsDto);
-        itemList.forEach(item -> item.setOrder(order));
-        order.setOrderItems(new HashSet<>(itemList));
-        itemRepository.saveAll(itemList);
+        Set<Item> itemSet = itemMapper.toEntitySet(itemsDto);
+        itemSet.forEach(item -> item.setOrder(order));
+        order.setOrderItems(new HashSet<>(itemSet));
+        itemRepository.saveAll(itemSet);
 
         MessageHandler.message(MessageStatus.SUCCESS, String.format(Messages.SUCCESS, "Order", "created"));
         return new MessageHandler(MessageHandler.hashMap);
@@ -83,6 +83,7 @@ public class OrderServiceImpl implements OrderService {
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Order")));
 
         String username = order.getCustomer().getUser().getUsername();
+        //check if the logged in person is trying to add item to another person's order
         checkAccess(username);
 
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
@@ -117,7 +118,7 @@ public class OrderServiceImpl implements OrderService {
 
         if (order.getOrderStatus().equals(OrderStatus.CREATED) || order.getOrderStatus().equals(OrderStatus.CANCELED)) {
 
-            Double orderPrice = calculateItemsPrice(itemDtoSet);
+            Double orderPrice = calculateItemsPriceToRemove(itemDtoSet);
             Integer orderQuantity = calculateItemsQuantity(itemDtoSet);
 
             Set<Item> orderItems = order.getOrderItems();
@@ -153,7 +154,7 @@ public class OrderServiceImpl implements OrderService {
             orderRepository.save(order);
         }
         else {
-            MessageHandler.message(MessageStatus.ERROR, "You can not cancel this order!");
+            MessageHandler.message(MessageStatus.ERROR, "This order is " + order.getOrderStatus().toString() + "!");
             return new MessageHandler(MessageHandler.hashMap);
         }
 
@@ -176,7 +177,7 @@ public class OrderServiceImpl implements OrderService {
             orderRepository.save(order);
         }
         else {
-            MessageHandler.message(MessageStatus.ERROR, "You can not submit this order!");
+            MessageHandler.message(MessageStatus.ERROR, "This order is " + order.getOrderStatus().toString() + "!");
             return new MessageHandler(MessageHandler.hashMap);
         }
 
@@ -195,7 +196,7 @@ public class OrderServiceImpl implements OrderService {
             orderRepository.save(order);
         }
         else {
-            MessageHandler.message(MessageStatus.ERROR, "You can not approve this order!");
+            MessageHandler.message(MessageStatus.ERROR, "This order is " + order.getOrderStatus().toString() + "!");
             return new MessageHandler(MessageHandler.hashMap);
         }
 
@@ -220,7 +221,7 @@ public class OrderServiceImpl implements OrderService {
             orderRepository.save(order);
         }
         else {
-            MessageHandler.message(MessageStatus.ERROR, "You can not decline this order!");
+            MessageHandler.message(MessageStatus.ERROR, "This order is " + order.getOrderStatus().toString() + "!");
             return new MessageHandler(MessageHandler.hashMap);
         }
 
@@ -261,7 +262,7 @@ public class OrderServiceImpl implements OrderService {
 
         User user = userRepository.findUserByUsername(LoggedUser.loggedInUsername()).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "User")));
-        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.ASC, sortBy));
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.by(Sort.Direction.DESC, sortBy));
         Page<Order> pagedResult;
         if (orderStatus != null)
             pagedResult = orderRepository.filterOrderByStatusAndUser(orderStatus, user.getUserId(), pageable);
@@ -294,14 +295,23 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.toDto(order);
     }
 
-    private double calculateItemsPrice(Set<ItemDto> itemDtoList) {
-
+    private double calculateItemsPrice(Set<ItemDto> itemDtoSet) {
         double totalPrice = 0.0;
-        for (ItemDto itemDto: itemDtoList) {
+        for (ItemDto itemDto: itemDtoSet) {
             Inventory inventory = inventoryRepository.findById(itemDto.getInventoryId()).orElseThrow(() ->
                     new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Item")));
             if (itemDto.getItemQuantity() > inventory.getQuantity())
                 throw new ExceptionHandler(String.format(ExceptionHandler.NOT_ENOUGH, inventory.getName()));
+            totalPrice = totalPrice + (itemDto.getItemQuantity() * inventory.getPrice());
+        }
+        return totalPrice;
+    }
+
+    private double calculateItemsPriceToRemove(Set<ItemDto> itemDtoSet) {
+        double totalPrice = 0.0;
+        for (ItemDto itemDto: itemDtoSet) {
+            Inventory inventory = inventoryRepository.findById(itemDto.getInventoryId()).orElseThrow(() ->
+                    new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Item")));
             totalPrice = totalPrice + (itemDto.getItemQuantity() * inventory.getPrice());
         }
         return totalPrice;

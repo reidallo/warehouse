@@ -42,18 +42,14 @@ public class SecurityConfig {
 
         http.cors().and().csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/swagger-ui.html",
-                        "/authenticate", "/webjars/**", "/configuration/security")
+                .antMatchers("/v2/api-docs", "/swagger-resources/**", "/swagger-ui/**", "/webjars/**")
                 .permitAll()
-                .antMatchers("/api/user/register", "/api/user/login", "/api/user/password",
-                        "/api/user/password/reset")
+                .antMatchers("/api/user/**")
                 .permitAll()
-                .antMatchers("/api/order/add", "/api/order/add/item",
-                        "/api/order/remove/item", "/api/order/cancel",
-                        "/api/order/submit", "/api/order/user/logged").hasAuthority("CLIENT")
-                .antMatchers("/api/order/", "/api/order/id", "/api/order/user", "/api/order/approve",
-                        "/api/order/decline","/api/order/fulfill", "/api/inventory/*", "/api/delivery/*",
-                        "/api/truck/*").hasAuthority("WAREHOUSE_MANAGER")
+                .antMatchers("/api/order/user/***")
+                .hasAuthority("CLIENT")
+                .antMatchers("/api/order/*", "/api/inventory/*", "/api/delivery/*", "/api/truck/*")
+                .hasAuthority("WAREHOUSE_MANAGER")
                 .antMatchers("/api/customer/*").hasAuthority("SYSTEM_ADMIN")
                 .anyRequest().authenticated()
                 .and().logout()

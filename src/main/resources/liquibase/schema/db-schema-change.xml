@@ -106,4 +106,12 @@
         <addNotNullConstraint tableName="wr_item" columnName="item_quantity" columnDataType="int"/>
     </changeSet>
 
+    <changeSet id="13" author="reidallo" context="remove unique constraint">
+        <dropUniqueConstraint tableName="wr_reset_password" constraintName="expiration_date"/>
+    </changeSet>
+
+    <changeSet id="14" author="reidallo" context="add unique constraint at token column">
+        <addUniqueConstraint tableName="wr_reset_password" columnNames="token"/>
+    </changeSet>
+
 </databaseChangeLog>
