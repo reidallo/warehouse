@@ -64,7 +64,7 @@ public class OrderServiceImpl implements OrderService {
         Customer customer = customerRepository.getCustomerByUserId(userId).orElseThrow(() ->
                 new ExceptionHandler(String.format(ExceptionHandler.NOT_FOUND, "Customer")));
         order.setCustomer(customer);
-        order.setAddress(order.getAddress());
+        order.setAddress(customer.getAddress());
         orderRepository.save(order);
 
         Set<Item> itemSet = itemMapper.toEntitySet(itemsDto);
