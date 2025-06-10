@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                     https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.5.xsd">
+
+    <changeSet id="1" author="reidallo" context="load roles into wr_role">
+        <loadData file="liquibase/data/role.csv"
+                  tableName="wr_role">
+            <column name="id" type="int" />
+            <column name="name" type="varchar(25)" />
+        </loadData>
+    </changeSet>
+
+    <changeSet id="2" author="reidallo" context="load inventory into the warehouse">
+        <loadData file="liquibase/data/inventory.csv"
+                  tableName="wr_inventory">
+            <column name="id" type="int" />
+            <column name="name" type="varchar(50)" />
+            <column name="quantity" type="int" />
+            <column name="name" type="varchar(50)" />
+            <column name="price" type="double(9,2)" />
+        </loadData>
+    </changeSet>
+
+    <changeSet id="3" author="reidallo" context="load trucks into the warehouse">
+        <loadData file="liquibase/data/truck.csv"
+                  tableName="wr_truck">
+            <column name="id" type="int" />
+            <column name="chassis_number" type="varchar(100)" />
+            <column name="license_plate" type="varchar(50)" />
+            <column name="active" type="boolean" />
+        </loadData>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,129 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet id="1" author="reidallo" context="add unique constraint at order number column">
+        <addUniqueConstraint tableName="wr_order" columnNames="order_number"/>
+    </changeSet>
+
+    <changeSet id="2" author="reidallo" context="add column active at wr_inventory">
+        <addColumn tableName="wr_inventory">
+            <column name="active" type="boolean"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="3" author="reidallo" context="create wr_truck table">
+        <createTable tableName="wr_truck">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="chassis_number" type="varchar(100)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="license_plate" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="active" type="boolean"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="4" author="reidallo" context="create wr_delivery table">
+        <createTable tableName="wr_delivery">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="delivery_date" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="delivery_code" type="varchar(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="fk_order" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="fk_truck" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="wr_delivery" baseColumnNames="fk_order"
+                                 constraintName="fk_delivery_order" referencedTableName="wr_order"
+                                 referencedColumnNames="id"/>
+        <addForeignKeyConstraint baseTableName="wr_delivery" baseColumnNames="fk_truck"
+                                 constraintName="fk_delivery_truck" referencedTableName="wr_truck"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="5" author="reidallo" context="add column status at wr_delivery">
+        <addColumn tableName="wr_delivery">
+            <column name="delivery_status" type="boolean"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="6" author="reidallo" context="create wr_reset_password table">
+        <createTable tableName="wr_reset_password">
+            <column name="id" type="int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="token" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expiration_date" type="date">
+                <constraints nullable="false" unique="true"/>
+            </column>
+            <column name="fk_user" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addForeignKeyConstraint baseTableName="wr_reset_password" baseColumnNames="fk_user"
+                                 constraintName="fk_user_token" referencedTableName="wr_user"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="7" author="reidallo" context="add not null constraint to password column">
+        <addNotNullConstraint tableName="wr_user" columnName="password" columnDataType="varchar(100)"/>
+    </changeSet>
+
+    <changeSet id="8" author="reidallo" context="add not null constraint to status column">
+        <addNotNullConstraint tableName="wr_order" columnName="status" columnDataType="varchar(25)"/>
+    </changeSet>
+
+    <changeSet id="9" author="reidallo" context="add not null constraint to price column">
+        <addNotNullConstraint tableName="wr_order" columnName="order_price" columnDataType="decimal(9,2)"/>
+    </changeSet>
+
+    <changeSet id="10" author="reidallo" context="add not null constraint to quantity column">
+        <addNotNullConstraint tableName="wr_order" columnName="order_quantity" columnDataType="int"/>
+    </changeSet>
+
+    <changeSet id="11" author="reidallo" context="change order_number column type">
+        <addNotNullConstraint tableName="wr_order" columnName="order_number" columnDataType="varchar(25)"/>
+    </changeSet>
+
+    <changeSet id="12" author="reidallo" context="change item_quantity column type">
+        <addNotNullConstraint tableName="wr_item" columnName="item_quantity" columnDataType="int"/>
+    </changeSet>
+
+    <changeSet id="13" author="reidallo" context="remove unique constraint">
+        <dropUniqueConstraint tableName="wr_reset_password" constraintName="expiration_date"/>
+    </changeSet>
+
+    <changeSet id="14" author="reidallo" context="add unique constraint at token column">
+        <addUniqueConstraint tableName="wr_reset_password" columnNames="token"/>
+    </changeSet>
+
+    <changeSet id="15" author="reidallo" context="add not null constraint to address column">
+        <addNotNullConstraint tableName="wr_customer" columnName="address" columnDataType="varchar(100)"/>
+    </changeSet>
+
+    <changeSet id="16" author="reidallo" context="add address column to wr_order table">
+        <addColumn tableName="wr_order">
+            <column name="address" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </addColumn>
+    </changeSet>
+
+</databaseChangeLog>
